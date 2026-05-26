@@ -452,31 +452,37 @@ section.active      { display: block; }
 .history-search::placeholder { color: var(--color-muted); }
 
 /* Patch entry card */
-.patch-entry {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  margin-bottom: 1rem;
-  overflow: hidden;
+.patch-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  padding: 1.5rem 0;
 }
 
-/* Patch header — clickable to collapse/expand */
+.patch-entry {
+  background: #0a0a0a;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.patch-entry.latest { border-left: 2px solid var(--color-accent); }
+.patch-entry:hover { border-color: #444; }
+
 .patch-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.25rem;
+  flex-direction: column;
+  padding: 1rem 1.1rem;
+  gap: 0.4rem;
   cursor: pointer;
   user-select: none;
-  background: var(--color-surface2);
-  border-bottom: 1px solid transparent;
-  transition: background 0.15s;
 }
 
-.patch-header:hover { background: var(--color-border); }
-.patch-entry.open .patch-header { border-bottom-color: var(--color-border); }
-
-.patch-header-left { display: flex; align-items: center; gap: 0.75rem; }
+.patch-header:hover { background: #111; }
+.patch-header-left { display: none; }
+.patch-body { display: none; }
 
 .version-badge {
   display: inline-block;
@@ -497,8 +503,10 @@ section.active      { display: block; }
   border: 1px solid var(--color-border);
 }
 
-.patch-title { font-size: 0.95rem; font-weight: 700; color: var(--color-text); }
-.patch-date  { font-size: 0.78rem; color: var(--color-muted); }
+.patch-title { display: none; }
+.patch-date  { font-size: 0.75rem; color: #444; }
+.patch-change-count { font-size: 0.72rem; color: #333; padding-top: 0.5rem; border-top: 0.5px solid #111; }
+.patch-chevron { display: none; }
 
 .patch-chevron {
   font-size: 0.7rem;
@@ -2728,20 +2736,15 @@ footer {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(0,0,0,0.95);
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  background: #000;
 }
 
-#video-lightbox.active { display: flex; }
+#video-lightbox.active { display: block; }
 
 #video-lightbox video {
-  width: 100vw;
-  height: 100vh;
-  max-width: 100vw;
-  max-height: 100vh;
-  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
   object-fit: contain;
   background: #000;
   outline: none;
@@ -3027,11 +3030,11 @@ footer {
 
 .vl-theatre.active {
   position: fixed;
-  top: 60px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 50;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -3684,14 +3687,12 @@ footer {
       <!-- ═══════════════════════════════════════════════════════
            PATCH 1.8
            ═══════════════════════════════════════════════════════ -->
-      <div class="patch-entry" id="p181">
+      <div class="patch-list-grid">
+      <div class="patch-entry latest" id="p181">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.8.1</span>
-            <span class="patch-title">Patch 1.8.1</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.8.1</span>
+          <span class="patch-date">25 Apr 2026</span>
+          <div class="patch-change-count">62 changes</div>
         </div>
         <div class="patch-body">
 
@@ -3807,12 +3808,9 @@ footer {
       </div><!-- /p181 -->
       <div class="patch-entry" id="p18">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.8</span>
-            <span class="patch-title">Patch 1.8</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.8</span>
+          <span class="patch-date">18 Apr 2026</span>
+          <div class="patch-change-count">119 changes</div>
         </div>
         <div class="patch-body">
 
@@ -4059,12 +4057,9 @@ footer {
 
       <div class="patch-entry" id="p171">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.7.1</span>
-            <span class="patch-title">Patch 1.7.1</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.7.1</span>
+          <span class="patch-date">30 Dec 2025</span>
+          <div class="patch-change-count">40 changes</div>
         </div>
         <div class="patch-body">
 
@@ -4198,12 +4193,9 @@ footer {
       </div><!-- /p171 -->
       <div class="patch-entry" id="p17">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.7</span>
-            <span class="patch-title">Patch 1.7</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.7</span>
+          <span class="patch-date">5 Oct 2025</span>
+          <div class="patch-change-count">86 changes</div>
         </div>
         <div class="patch-body">
 
@@ -4422,12 +4414,9 @@ footer {
       </div><!-- /p17 -->
       <div class="patch-entry" id="p16hf">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.6 Hotfix</span>
-            <span class="patch-title">Patch 1.6 Hotfix</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.6 HF</span>
+          <span class="patch-date">17 Aug 2025</span>
+          <div class="patch-change-count">56 changes</div>
         </div>
         <div class="patch-body">
 
@@ -4576,12 +4565,9 @@ footer {
       </div><!-- /p16hf -->
       <div class="patch-entry" id="p16">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.6</span>
-            <span class="patch-title">Patch 1.6</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.6</span>
+          <span class="patch-date">10 Aug 2025</span>
+          <div class="patch-change-count">186 changes</div>
         </div>
         <div class="patch-body">
 
@@ -4992,12 +4978,9 @@ footer {
 
       <div class="patch-entry" id="p15">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.5</span>
-            <span class="patch-title">Patch 1.5</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.5</span>
+          <span class="patch-date">12 Jul 2025</span>
+          <div class="patch-change-count">45 changes</div>
         </div>
         <div class="patch-body">
 
@@ -5151,12 +5134,9 @@ footer {
       </div><!-- /p15 -->
       <div class="patch-entry" id="p14">
         <div class="patch-header" onclick="openPatchModal(this.parentElement)">
-          <div class="patch-header-left">
-            <span class="version-badge">v1.4</span>
-            <span class="patch-title">Patch 1.4</span>
-          </div>
-          <span class="patch-date"></span>
-          <span class="patch-chevron">▾</span>
+          <span class="version-badge">Patch 1.4</span>
+          <span class="patch-date">2 Jul 2025</span>
+          <div class="patch-change-count">161 changes</div>
         </div>
         <div class="patch-body">
 
@@ -5580,14 +5560,8 @@ footer {
         </div>
       </div><!-- /p14 -->
 
-      <!-- VANILLA -->
-      <div class="vanilla-entry">
-        <span class="version-badge origin">Vanilla</span>
-        <h3 style="margin: 0.5rem 0 0.25rem;">Evolve Stage 2 — Unmodified</h3>
-        <p>The base game before any modding. All changes above are relative to this starting point.</p>
-      </div>
 
-    </div><!-- /history-main -->
+    </div></div><!-- /history-main -->
   </div><!-- /history-layout -->
 </section>
 
@@ -12275,26 +12249,26 @@ const IMAGES = {
     skins: {
     'Goliath': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/thumb_mnstr_goliathA.png', portrait: '', isHeadshot: true },
-      { name: 'Clownfish', thumb: 'https://assets.modded-evolve.com/images/goliath_clownfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_clownfish_bg.png' },
-      { name: 'Corpse Eater', thumb: 'https://assets.modded-evolve.com/images/goliath_corpse_eater_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_corpse_eater_bg.png' },
-      { name: 'Cow', thumb: 'https://assets.modded-evolve.com/images/goliath_cow_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_cow_bg.png' },
-      { name: 'Digi', thumb: 'https://assets.modded-evolve.com/images/goliath_digi_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_digi_bg.png' },
-      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/goliath_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_elite_bg.png' },
-      { name: 'Frostbite', thumb: 'https://assets.modded-evolve.com/images/goliath_frostbite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_frostbite_bg.png' },
+      { name: 'Clownfish', thumb: 'https://assets.modded-evolve.com/images/goliath_clownfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_clownfish_bg.PNG' },
+      { name: 'Corpse Eater', thumb: 'https://assets.modded-evolve.com/images/goliath_corpse_eater_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_corpse_eater_bg.PNG' },
+      { name: 'Cow', thumb: 'https://assets.modded-evolve.com/images/goliath_cow_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_cow_bg.PNG' },
+      { name: 'Digi', thumb: 'https://assets.modded-evolve.com/images/goliath_digi_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_digi_bg.PNG' },
+      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/goliath_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_elite_bg.PNG' },
+      { name: 'Frostbite', thumb: 'https://assets.modded-evolve.com/images/goliath_frostbite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_frostbite_bg.PNG' },
       { name: 'Gold', thumb: 'https://assets.modded-evolve.com/images/goliath_gold_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/goliath_gold_bg.PNG' },
-      { name: 'Magma', thumb: 'https://assets.modded-evolve.com/images/goliath_magma_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_magma_bg.png' },
+      { name: 'Magma', thumb: 'https://assets.modded-evolve.com/images/goliath_magma_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_magma_bg.PNG' },
       { name: 'Oldglory', thumb: 'https://assets.modded-evolve.com/images/goliath_oldglory_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/goliath_oldglory_bg.PNG' },
       { name: 'Platinum', thumb: 'https://assets.modded-evolve.com/images/goliath_platinum_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/goliath_platinum_bg.PNG' },
       { name: 'Prime', thumb: 'https://assets.modded-evolve.com/images/goliath_prime_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/goliath_prime_bg.PNG' },
-      { name: 'Redpanda', thumb: 'https://assets.modded-evolve.com/images/goliath_redpanda_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_redpanda_bg.png' },
+      { name: 'Redpanda', thumb: 'https://assets.modded-evolve.com/images/goliath_redpanda_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_redpanda_bg.PNG' },
       { name: 'Savage', thumb: 'https://assets.modded-evolve.com/images/goliath_savage_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_savage_bg.PNG' },
-      { name: 'Starburst', thumb: 'https://assets.modded-evolve.com/images/goliath_starburst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_starburst_bg.png' },
-      { name: 'Swamp', thumb: 'https://assets.modded-evolve.com/images/goliath_swamp_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_swamp_bg.png' },
-      { name: 'Tiger', thumb: 'https://assets.modded-evolve.com/images/goliath_tiger_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_tiger_bg.png' },
-      { name: 'Treefrog', thumb: 'https://assets.modded-evolve.com/images/goliath_treefrog_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_treefrog_bg.png' },
-      { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/goliath_tribal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_tribal_bg.png' },
-      { name: 'Wendigo', thumb: 'https://assets.modded-evolve.com/images/goliath_wendigo_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_wendigo_bg.png' },
-      { name: 'Whitetiger', thumb: 'https://assets.modded-evolve.com/images/goliath_whitetiger_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_whitetiger_bg.png' },
+      { name: 'Starburst', thumb: 'https://assets.modded-evolve.com/images/goliath_starburst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_starburst_bg.PNG' },
+      { name: 'Swamp', thumb: 'https://assets.modded-evolve.com/images/goliath_swamp_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_swamp_bg.PNG' },
+      { name: 'Tiger', thumb: 'https://assets.modded-evolve.com/images/goliath_tiger_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_tiger_bg.PNG' },
+      { name: 'Treefrog', thumb: 'https://assets.modded-evolve.com/images/goliath_treefrog_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_treefrog_bg.PNG' },
+      { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/goliath_tribal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_tribal_bg.PNG' },
+      { name: 'Wendigo', thumb: 'https://assets.modded-evolve.com/images/goliath_wendigo_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_wendigo_bg.PNG' },
+      { name: 'Whitetiger', thumb: 'https://assets.modded-evolve.com/images/goliath_whitetiger_thumb.png', portrait: 'https://assets.modded-evolve.com/images/goliath_whitetiger_bg.PNG' },
     ],
     'Meteor Goliath': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/goliath_meteor_character_thumb.png', portrait: '', isHeadshot: true },
@@ -12303,21 +12277,21 @@ const IMAGES = {
     ],
     'Kraken': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/thumb_mnstr_groundera.png', portrait: '', isHeadshot: true },
-      { name: 'Bermuda', thumb: 'https://assets.modded-evolve.com/images/kraken_bermuda_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_bermuda_bg.png' },
-      { name: 'Corpse Eater', thumb: 'https://assets.modded-evolve.com/images/kraken_corpse_eater_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_corpse_eater_bg.png' },
-      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/kraken_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_elite_bg.png' },
-      { name: 'Frostbite', thumb: 'https://assets.modded-evolve.com/images/kraken_frostbite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_frostbite_bg.png' },
+      { name: 'Bermuda', thumb: 'https://assets.modded-evolve.com/images/kraken_bermuda_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_bermuda_bg.PNG' },
+      { name: 'Corpse Eater', thumb: 'https://assets.modded-evolve.com/images/kraken_corpse_eater_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_corpse_eater_bg.PNG' },
+      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/kraken_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_elite_bg.PNG' },
+      { name: 'Frostbite', thumb: 'https://assets.modded-evolve.com/images/kraken_frostbite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_frostbite_bg.PNG' },
       { name: 'Gold', thumb: 'https://assets.modded-evolve.com/images/kraken_gold_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/kraken_gold_bg.PNG' },
-      { name: 'Jellyfish', thumb: 'https://assets.modded-evolve.com/images/kraken_jellyfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_jellyfish_bg.png' },
-      { name: 'Magma', thumb: 'https://assets.modded-evolve.com/images/kraken_magma_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_magma_bg.png' },
+      { name: 'Jellyfish', thumb: 'https://assets.modded-evolve.com/images/kraken_jellyfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_jellyfish_bg.PNG' },
+      { name: 'Magma', thumb: 'https://assets.modded-evolve.com/images/kraken_magma_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_magma_bg.PNG' },
       { name: 'Prime', thumb: 'https://assets.modded-evolve.com/images/kraken_prime_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/kraken_prime_bg.PNG' },
       { name: 'Razer', thumb: 'https://assets.modded-evolve.com/images/kraken_razer_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/kraken_razer_bg.PNG' },
-      { name: 'Regal', thumb: 'https://assets.modded-evolve.com/images/kraken_regal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_regal_bg.png' },
-      { name: 'Savage', thumb: 'https://assets.modded-evolve.com/images/kraken_savage_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_savage_bg.png' },
-      { name: 'Starburst', thumb: 'https://assets.modded-evolve.com/images/kraken_starburst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_starburst_bg.png' },
-      { name: 'Swamp', thumb: 'https://assets.modded-evolve.com/images/kraken_swamp_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_swamp_bg.png' },
-      { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/kraken_tribal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_tribal_bg.png' },
-      { name: 'Wendigo', thumb: 'https://assets.modded-evolve.com/images/kraken_wendigo_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_wendigo_bg.png' },
+      { name: 'Regal', thumb: 'https://assets.modded-evolve.com/images/kraken_regal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_regal_bg.PNG' },
+      { name: 'Savage', thumb: 'https://assets.modded-evolve.com/images/kraken_savage_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_savage_bg.PNG' },
+      { name: 'Starburst', thumb: 'https://assets.modded-evolve.com/images/kraken_starburst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_starburst_bg.PNG' },
+      { name: 'Swamp', thumb: 'https://assets.modded-evolve.com/images/kraken_swamp_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_swamp_bg.PNG' },
+      { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/kraken_tribal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_tribal_bg.PNG' },
+      { name: 'Wendigo', thumb: 'https://assets.modded-evolve.com/images/kraken_wendigo_thumb.png', portrait: 'https://assets.modded-evolve.com/images/kraken_wendigo_bg.PNG' },
     ],
     'Elder Kraken': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/thumb_mnstr_krakenElder.png', portrait: '', isHeadshot: true },
@@ -12326,44 +12300,44 @@ const IMAGES = {
     ],
     'Wraith': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/thumb_mnstr_teleportera.png', portrait: '', isHeadshot: true },
-      { name: 'Clownfish', thumb: 'https://assets.modded-evolve.com/images/wraith_clownfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_clownfish_bg.png' },
-      { name: 'Corpse Eater', thumb: 'https://assets.modded-evolve.com/images/wraith_corpse_eater_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_corpse_eater_bg.png' },
-      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/wraith_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_elite_bg.png' },
-      { name: 'Frostbite', thumb: 'https://assets.modded-evolve.com/images/wraith_frostbite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_frostbite_bg.png' },
+      { name: 'Clownfish', thumb: 'https://assets.modded-evolve.com/images/wraith_clownfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_clownfish_bg.PNG' },
+      { name: 'Corpse Eater', thumb: 'https://assets.modded-evolve.com/images/wraith_corpse_eater_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_corpse_eater_bg.PNG' },
+      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/wraith_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_elite_bg.PNG' },
+      { name: 'Frostbite', thumb: 'https://assets.modded-evolve.com/images/wraith_frostbite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_frostbite_bg.PNG' },
       { name: 'Gold', thumb: 'https://assets.modded-evolve.com/images/wraith_gold_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/wraith_gold_bg.PNG' },
-      { name: 'Hornet', thumb: 'https://assets.modded-evolve.com/images/wraith_hornet_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_hornet_bg.png' },
-      { name: 'Jackolantern', thumb: 'https://assets.modded-evolve.com/images/wraith_jackolantern_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_jackolantern_bg.png' },
-      { name: 'Jellyfish', thumb: 'https://assets.modded-evolve.com/images/wraith_jellyfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_jellyfish_bg.png' },
-      { name: 'Magma', thumb: 'https://assets.modded-evolve.com/images/wraith_magma_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_magma_bg.png' },
-      { name: 'Orca', thumb: 'https://assets.modded-evolve.com/images/wraith_orca_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_orca_bg.png' },
-      { name: 'Peacock', thumb: 'https://assets.modded-evolve.com/images/wraith_peacock_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_peacock_bg.png' },
+      { name: 'Hornet', thumb: 'https://assets.modded-evolve.com/images/wraith_hornet_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_hornet_bg.PNG' },
+      { name: 'Jackolantern', thumb: 'https://assets.modded-evolve.com/images/wraith_jackolantern_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_jackolantern_bg.PNG' },
+      { name: 'Jellyfish', thumb: 'https://assets.modded-evolve.com/images/wraith_jellyfish_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_jellyfish_bg.PNG' },
+      { name: 'Magma', thumb: 'https://assets.modded-evolve.com/images/wraith_magma_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_magma_bg.PNG' },
+      { name: 'Orca', thumb: 'https://assets.modded-evolve.com/images/wraith_orca_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_orca_bg.PNG' },
+      { name: 'Peacock', thumb: 'https://assets.modded-evolve.com/images/wraith_peacock_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_peacock_bg.PNG' },
       { name: 'Prime', thumb: 'https://assets.modded-evolve.com/images/wraith_prime_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/wraith_prime_bg.PNG' },
-      { name: 'Savage', thumb: 'https://assets.modded-evolve.com/images/wraith_savage_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_savage_bg.png' },
-      { name: 'Starburst', thumb: 'https://assets.modded-evolve.com/images/wraith_starburst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_starburst_bg.png' },
-      { name: 'Swamp', thumb: 'https://assets.modded-evolve.com/images/wraith_swamp_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_swamp_bg.png' },
-      { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/wraith_tribal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_tribal_bg.png' },
-      { name: 'Wendigo', thumb: 'https://assets.modded-evolve.com/images/wraith_wendigo_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_wendigo_bg.png' },
+      { name: 'Savage', thumb: 'https://assets.modded-evolve.com/images/wraith_savage_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_savage_bg.PNG' },
+      { name: 'Starburst', thumb: 'https://assets.modded-evolve.com/images/wraith_starburst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_starburst_bg.PNG' },
+      { name: 'Swamp', thumb: 'https://assets.modded-evolve.com/images/wraith_swamp_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_swamp_bg.PNG' },
+      { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/wraith_tribal_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_tribal_bg.PNG' },
+      { name: 'Wendigo', thumb: 'https://assets.modded-evolve.com/images/wraith_wendigo_thumb.png', portrait: 'https://assets.modded-evolve.com/images/wraith_wendigo_bg.PNG' },
     ],
     'Behemoth': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/thumb_mnstr_rocky.png', portrait: '', isHeadshot: true },
-      { name: 'Amethyst', thumb: 'https://assets.modded-evolve.com/images/behemoth_amethyst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_amethyst_bg.png' },
-      { name: 'Bloodrock', thumb: 'https://assets.modded-evolve.com/images/behemoth_bloodrock_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_bloodrock_bg.png' },
-      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/behemoth_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_elite_bg.png' },
-      { name: 'Glacial', thumb: 'https://assets.modded-evolve.com/images/behemoth_glacial_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_glacial_bg.png' },
+      { name: 'Amethyst', thumb: 'https://assets.modded-evolve.com/images/behemoth_amethyst_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_amethyst_bg.PNG' },
+      { name: 'Bloodrock', thumb: 'https://assets.modded-evolve.com/images/behemoth_bloodrock_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_bloodrock_bg.PNG' },
+      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/behemoth_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_elite_bg.PNG' },
+      { name: 'Glacial', thumb: 'https://assets.modded-evolve.com/images/behemoth_glacial_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_glacial_bg.PNG' },
       { name: 'Gold', thumb: 'https://assets.modded-evolve.com/images/behemoth_gold_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/behemoth_gold_bg.PNG' },
-      { name: 'Jade', thumb: 'https://assets.modded-evolve.com/images/behemoth_jade_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_jade_bg.png' },
-      { name: 'Moonstone', thumb: 'https://assets.modded-evolve.com/images/behemoth_moonstone_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_moonstone_bg.png' },
+      { name: 'Jade', thumb: 'https://assets.modded-evolve.com/images/behemoth_jade_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_jade_bg.PNG' },
+      { name: 'Moonstone', thumb: 'https://assets.modded-evolve.com/images/behemoth_moonstone_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_moonstone_bg.PNG' },
       { name: 'Prime', thumb: 'https://assets.modded-evolve.com/images/behemoth_prime_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/behemoth_prime_bg.PNG' },
-      { name: 'Sandstone', thumb: 'https://assets.modded-evolve.com/images/behemoth_sandstone_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_sandstone_bg.png' },
+      { name: 'Sandstone', thumb: 'https://assets.modded-evolve.com/images/behemoth_sandstone_thumb.png', portrait: 'https://assets.modded-evolve.com/images/behemoth_sandstone_bg.PNG' },
     ],
     'Gorgon': [
       { name: 'Headshot', thumb: 'https://assets.modded-evolve.com/images/thumb_mnstr_lurker.png', portrait: '', isHeadshot: true },
-      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/lurker_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_elite_bg.png' },
+      { name: 'Elite', thumb: 'https://assets.modded-evolve.com/images/lurker_elite_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_elite_bg.PNG' },
       { name: 'Gold', thumb: 'https://assets.modded-evolve.com/images/lurker_gold_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/lurker_gold_bg.PNG' },
-      { name: 'Gorgonzola', thumb: 'https://assets.modded-evolve.com/images/lurker_gorgonzola_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_gorgonzola_bg.png' },
-      { name: 'Ladybug', thumb: 'https://assets.modded-evolve.com/images/lurker_ladybug_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_ladybug_bg.png' },
+      { name: 'Gorgonzola', thumb: 'https://assets.modded-evolve.com/images/lurker_gorgonzola_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_gorgonzola_bg.PNG' },
+      { name: 'Ladybug', thumb: 'https://assets.modded-evolve.com/images/lurker_ladybug_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_ladybug_bg.PNG' },
       { name: 'Prime', thumb: 'https://assets.modded-evolve.com/images/lurker_prime_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/lurker_prime_bg.PNG' },
-      { name: 'Scarab', thumb: 'https://assets.modded-evolve.com/images/lurker_scarab_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_scarab_bg.png' },
+      { name: 'Scarab', thumb: 'https://assets.modded-evolve.com/images/lurker_scarab_thumb.png', portrait: 'https://assets.modded-evolve.com/images/lurker_scarab_bg.PNG' },
       { name: 'Tribal', thumb: 'https://assets.modded-evolve.com/images/lurker_tribal_bg.PNG', portrait: 'https://assets.modded-evolve.com/images/lurker_tribal_bg.PNG' },
     ],
     'Glacial Behemoth': [
