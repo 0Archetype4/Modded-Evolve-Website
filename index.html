@@ -1973,7 +1973,7 @@ img[src*="crowkeniticlongrifle"] {
   border-radius: 3px;
 }
 
-.tier-bronze    { background: #2a1a0a; color: #c87a40; }
+.tier-bronze    { background: #2a1a0a; color: #d4b050; }
 .tier-bronze-d  { background: #3a2000; color: #ff9944; font-weight: 900; }
 .tier-silver    { background: #1a1a1a; color: #aaaaaa; }
 .tier-silver-d  { background: #252525; color: #dddddd; font-weight: 900; }
@@ -7786,7 +7786,7 @@ footer {
   <div id="ranked-data" style="display:none;" data-players='[]'></div>
   <div class="ranked-add-section" style="margin-bottom:2.5rem;"><h3>Rank Legend</h3>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem;">
-      <div><div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#c87a40;margin-bottom:0.75rem;font-weight:700;">Bronze</div>
+      <div><div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#d4b050;margin-bottom:0.75rem;font-weight:700;">Bronze</div>
         <div style="display:flex;flex-direction:column;gap:0.6rem;">
           <div style="display:flex;align-items:center;gap:0.75rem;"><img src="https://assets.modded-evolve.com/images/BronzeDestroyer.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 8px #ff9944);"><span style="font-size:0.85rem;color:#ff9944;font-weight:700;">Bronze Destroyer</span></div>
           <div style="display:flex;align-items:center;gap:0.75rem;"><img src="https://assets.modded-evolve.com/images/BronzeElite.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #e07030);"><span style="font-size:0.85rem;">Bronze Elite</span></div>
@@ -10962,17 +10962,19 @@ footer {
   <!-- Biome filter -->
   <div class="map-biome-filter">
     <button class="map-biome-btn active" onclick="filterMaps('all',this)">All</button>
-    <button class="map-biome-btn" onclick="filterMaps('desert',this)" style="--mbclr:#c87a40;">Desert</button>
+    <button class="map-biome-btn" onclick="filterMaps('desert',this)" style="--mbclr:#d4b050;">Desert</button>
     <button class="map-biome-btn" onclick="filterMaps('forest',this)" style="--mbclr:#387642;">Forest</button>
     <button class="map-biome-btn" onclick="filterMaps('ice',this)" style="--mbclr:#4a8aad;">Ice</button>
     <button class="map-biome-btn" onclick="filterMaps('lava',this)" style="--mbclr:#8b2a1a;">Lava</button>
+    <button class="map-biome-btn" onclick="filterMaps('brokenhill',this)" style="--mbclr:#d4580a;">Broken Hill</button>
+    <button class="map-biome-btn" onclick="filterMaps('tutorial',this)" style="--mbclr:#7a6a9a;">Tutorial</button>
   </div>
 
   <div class="map-list" id="map-list">
 
   <div class="map-card" data-biome="desert">
-    <div class="map-card-header" style="border-left:3px solid #c87a40;">
-      <div class="map-card-biome" style="color:#c87a40;">DESERT</div>
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
       <div class="map-card-name">The Dam</div>
       <div class="map-card-desc">Celestial's HEBO-class hydroelectric dam surveys a world from orbit, intelligently chooses the best location for a dam, then drops out of orbit and deploys itself, all without human supervision. The twin reservoirs' overflow doors are fail-safe, opening and releasing dangerous excess water should the power completely fail.</div>
     </div>
@@ -10992,8 +10994,8 @@ footer {
   </div>
 
   <div class="map-card" data-biome="desert">
-    <div class="map-card-header" style="border-left:3px solid #c87a40;">
-      <div class="map-card-biome" style="color:#c87a40;">DESERT</div>
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
       <div class="map-card-name">Armory</div>
       <div class="map-card-desc">Designed to repel attacks from the most aggressive Corp Pirates, EbonStar's armory is fitted with an EMP cannon. When attacked, the cannon fires its EMP rockets which shut down the electronic systems of any would-be invader.</div>
     </div>
@@ -11013,8 +11015,8 @@ footer {
   </div>
 
   <div class="map-card" data-biome="desert">
-    <div class="map-card-header" style="border-left:3px solid #c87a40;">
-      <div class="map-card-biome" style="color:#c87a40;">DESERT</div>
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
       <div class="map-card-name">Wraith Trap</div>
       <div class="map-card-desc">Desperate, EbonStar constructed a hideous, terrifying experiment at this secret desert base.</div>
     </div>
@@ -11096,24 +11098,24 @@ footer {
     </div>
   </div>
 
-  <div class="map-card" data-biome="forest">
-    <div class="map-card-header" style="border-left:3px solid #387642;">
-      <div class="map-card-biome" style="color:#387642;">FOREST</div>
-      <div class="map-card-name">Rendering Plant</div>
-      <div class="map-card-desc">This settlement renders marsh striders down into the fatty oils, lipids, and other organic chemicals the colony uses as raw materials for a million everyday uses. It's much cheaper and more efficient to mine the necessary hydrocarbons from the local wildlife than to synthesize it all.</div>
+  <div class="map-card" data-biome="brokenhill">
+    <div class="map-card-header" style="border-left:3px solid #d4580a;">
+      <div class="map-card-biome" style="color:#d4580a;">BROKEN HILL</div>
+      <div class="map-card-name">Broken Hill Foundry</div>
+      <div class="map-card-desc">Along with iron, nickel, copper, and aluminum, the Foundry smelts the tons of ultrastable bohrium produced by the mine. There are several foundries dotted across the colony, Broken Hill's is the largest.</div>
     </div>
     <div class="map-card-body">
       <div class="map-card-media">
         <div class="map-media-section">
           <div class="map-media-label">Images</div>
-          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_slagtown.PNG','Rendering Plant - Hunt')"><img src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_slagtown.PNG" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_forest_slagtown.PNG','Rendering Plant - Nest')"><img src="https://assets.modded-evolve.com/images/gallery/maps/nest_forest_slagtown.PNG" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_slagtown.PNG','Rendering Plant - Rescue')"><img src="https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_slagtown.PNG" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_slagtown.PNG','Broken Hill Foundry - Hunt')"><img src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_slagtown.PNG" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_forest_slagtown.PNG','Broken Hill Foundry - Nest')"><img src="https://assets.modded-evolve.com/images/gallery/maps/nest_forest_slagtown.PNG" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_slagtown.PNG','Broken Hill Foundry - Rescue')"><img src="https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_slagtown.PNG" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
         </div>
         <div class="map-media-section">
           <div class="map-media-label">Videos</div>
           <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_intro_f_slagtown_hunt.mp4','F Slagtown Hunt')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_slagtown_hunt.jpg" alt="F Slagtown Hunt" loading="lazy"><div class="map-img-label">F Slagtown Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_intro_f_slagtown_nest.mp4','F Slagtown Nest')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_slagtown_nest.jpg" alt="F Slagtown Nest" loading="lazy"><div class="map-img-label">F Slagtown Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_intro_f_slagtown_rescue.mp4','F Slagtown Rescue')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_slagtown_rescue.jpg" alt="F Slagtown Rescue" loading="lazy"><div class="map-img-label">F Slagtown Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_outro_f_slagtown_merc.mp4','F Slagtown Merc')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_slagtown_merc.jpg" alt="F Slagtown Merc" loading="lazy"><div class="map-img-label">F Slagtown Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_outro_f_slagtown_monster.mp4','F Slagtown Monster')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_slagtown_monster.jpg" alt="F Slagtown Monster" loading="lazy"><div class="map-img-label">F Slagtown Monster</div></div></div>
         </div>
       </div>
-      
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_slagtown.png','Minimap')"><img src="https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_slagtown.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
     </div>
   </div>
 
@@ -11244,8 +11246,8 @@ footer {
   </div>
 
   <div class="map-card" data-biome="desert">
-    <div class="map-card-header" style="border-left:3px solid #c87a40;">
-      <div class="map-card-biome" style="color:#c87a40;">DESERT</div>
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
       <div class="map-card-name">Salveron Industries</div>
       <div class="map-card-desc">Built in an ecological dead-zone, Salveron Industries installed a Generyst processing facility far enough away from the rest of colonial life. Here, the alien fungus that fuels the MedGun can be bred in isolation without fear of contaminating the local food supply.</div>
     </div>
@@ -11327,10 +11329,61 @@ footer {
     </div>
   </div>
 
+  <div class="map-card" data-biome="brokenhill">
+    <div class="map-card-header" style="border-left:3px solid #d4580a;">
+      <div class="map-card-biome" style="color:#d4580a;">BROKEN HILL</div>
+      <div class="map-card-name">Broken Hill Mine</div>
+      <div class="map-card-desc">The first and largest bohrium mine on Shear, the Broken Hill Mine was the brainchild of Ida Lennox. She designed it, and it produced the billions of tons of raw materials necessary to build the rest of the colony, along with enough bohrium to make the corporations of the Arm independent from Hub.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_desert_mine.PNG','Broken Hill Mine - Hunt')"><img src="https://assets.modded-evolve.com/images/gallery/maps/load_desert_mine.PNG" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_desert_mine.PNG','Broken Hill Mine - Nest')"><img src="https://assets.modded-evolve.com/images/gallery/maps/nest_desert_mine.PNG" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_mine.PNG','Broken Hill Mine - Rescue')"><img src="https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_mine.PNG" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/lobby_desert_mine_40534656.mp4','Broken Hill Mine Lobby')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_desert_mine_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_intro_d_mine_hunt.mp4','D Mine Hunt')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mine_hunt.jpg" alt="D Mine Hunt" loading="lazy"><div class="map-img-label">D Mine Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_intro_d_mine_nest.mp4','D Mine Nest')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mine_nest.jpg" alt="D Mine Nest" loading="lazy"><div class="map-img-label">D Mine Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_intro_d_mine_rescue.mp4','D Mine Rescue')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mine_rescue.jpg" alt="D Mine Rescue" loading="lazy"><div class="map-img-label">D Mine Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_outro_d_mine_merc.mp4','D Mine Merc')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_mine_merc.jpg" alt="D Mine Merc" loading="lazy"><div class="map-img-label">D Mine Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/v_mp_outro_d_mine_monster.mp4','D Mine Monster')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_mine_monster.jpg" alt="D Mine Monster" loading="lazy"><div class="map-img-label">D Mine Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_mine.png','Minimap')"><img src="https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_mine.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="brokenhill">
+    <div class="map-card-header" style="border-left:3px solid #d4580a;">
+      <div class="map-card-biome" style="color:#d4580a;">BROKEN HILL</div>
+      <div class="map-card-name">Broken Hill Murder Pits</div>
+      <div class="map-card-desc">Combatants from around the colony fight to the death in the Broken Hill Murder Pits.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/arena_murder_pits.PNG','Broken Hill Murder Pits - Arena')"><img src="https://assets.modded-evolve.com/images/gallery/maps/arena_murder_pits.PNG" alt="Arena" loading="lazy"><div class="map-img-label">Arena</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/Videos/legacyevolve/lobby_murder_pits_40534656.mp4','Murder Pits Lobby')"><img src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_murder_pits_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_murder_pits.png','Minimap')"><img src="https://assets.modded-evolve.com/images/gallery/maps/minimap_murder_pits.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="tutorial">
+    <div class="map-card-header" style="border-left:3px solid #7a6a9a;">
+      <div class="map-card-biome" style="color:#7a6a9a;">TUTORIAL</div>
+      <div class="map-card-name">Tutorial</div>
+      <div class="map-card-desc">Training map designed to teach new players the fundamentals of both the Hunter and Monster roles. Covers movement, abilities, and combat mechanics.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_tutorial.png','Minimap')"><img src="https://assets.modded-evolve.com/images/gallery/maps/minimap_tutorial.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
   </div>
 </section>
-
-<!-- GALLERY — EMBLEMS -->
 <section id="gallery-emblems">
   <div class="gallery-back-bar">
     <button class="gallery-back-btn" onclick="showPage('gallery')">← Back to Gallery</button>
