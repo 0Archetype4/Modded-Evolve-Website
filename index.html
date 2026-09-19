@@ -4473,6 +4473,73 @@ footer {
 .item-notes details>summary::before{content:"+";display:inline-block;width:1.1em;font-weight:700;color:var(--cls-color, var(--color-accent));}
 .item-notes details[open]>summary::before{content:"\2212";}
 </style>
+
+
+
+
+
+<style id="mobile-css">
+/* MOBILE START */
+.nav-toggle { display: none; background: none; border: 1px solid var(--color-border); color: var(--color-text); border-radius: 8px;
+  width: 42px; height: 38px; font-size: 1.3rem; line-height: 1; cursor: pointer; }
+@media (max-width: 900px) {
+  /* nav: logo + burger, links drop down as a panel */
+  nav { padding: 0 1rem; }
+  .nav-logo { white-space: nowrap; font-size: 1.05rem; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links { display: none; position: fixed; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: rgba(0,0,0,0.97); border-bottom: 1px solid var(--color-border); padding: 0.5rem 0 0.75rem; margin: 0;
+    max-height: calc(100vh - 60px); overflow-y: auto; }
+  .nav-links.open { display: flex; }
+  .nav-links li { list-style: none; }
+  .nav-links a { display: block; padding: 0.85rem 1.25rem; font-size: 0.95rem; }
+  .nav-dropdown-menu { position: static; transform: none; display: block; min-width: 0; border: none; border-radius: 0;
+    background: rgba(255,255,255,0.03); padding: 0; }
+  .nav-dropdown-menu a { padding-left: 2.25rem; font-size: 0.85rem; }
+
+  section { padding-left: 1rem; padding-right: 1rem; }
+
+  /* character card: stack, portrait full width */
+  .char-top { grid-template-columns: 1fr; min-height: 0; }
+  .char-info { padding: 1.5rem 1.25rem; border-right: none; border-bottom: 1px solid var(--color-border); }
+  .char-desc { max-width: none; }
+  .char-portrait-col { width: 100%; height: auto; min-height: 0; max-height: none; aspect-ratio: 8 / 9; padding: 0.5rem; overflow: hidden; }
+  .char-portrait-col img { max-height: 100%; }
+  .char-items-grid { grid-template-columns: repeat(2, 1fr); }
+  .char-item-col { border-right: none; border-bottom: 1px solid var(--color-border); padding: 1rem; }
+  .skins-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .char-card img, .char-card svg, .char-card video { max-width: 100%; }
+  .char-card table { display: block; overflow-x: auto; }
+  /* the General / Contextual Combat / Movement panels are an inline three-column grid: stack them */
+  .char-card div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+  .patch-list-grid > .muted { grid-column: 1 / -1; }
+  .char-card div[style*="padding:1.1rem 2rem"] { padding-left: 0.9rem !important; padding-right: 0.9rem !important; }
+  .char-card span[style*="white-space:nowrap"] { white-space: normal !important; text-align: right; }
+
+  /* patch history, modals, galleries */
+  .history-layout { grid-template-columns: 1fr; }
+  .sub-portrait-col { width: 100%; min-width: 0; }
+  #patch-modal, #char-history-modal { max-width: 100%; width: 100%; border-radius: 0; }
+  .video-grid { grid-template-columns: 1fr; }
+  .vl-actor { width: 100%; }
+  #music-tracklist-overlay { width: 100%; max-width: 100%; }
+
+  /* download */
+  .download-card { flex-direction: column; align-items: stretch; }
+  .download-card > div { flex-shrink: 1; min-width: 0; flex-wrap: wrap; }
+  .download-card .btn { flex: 1 1 140px; justify-content: center; }
+
+  /* perks */
+  .perks-toggle-icon { width: 92px; height: 92px; }
+}
+@media (max-width: 560px) {
+  .char-items-grid { grid-template-columns: 1fr; }
+  .perks-grid { grid-template-columns: 1fr; }
+  .perk-stat-row, .perk-stat-head { grid-template-columns: minmax(0, 1fr) repeat(3, minmax(52px, auto)); gap: 4px; }
+  h1 { font-size: 2.4rem; }
+}
+/* MOBILE END */
+</style>
 </head>
 <body>
 
@@ -4500,6 +4567,7 @@ footer {
      ============================================================ -->
 <nav>
   <a class="nav-logo" href="#" onclick="showPage('home')">Modded Evolve</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">&#9776;</button>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home')"        class="active" id="nav-home">Home</a></li>
     <li><a href="#" onclick="showPage('characters')"                 id="nav-characters">Characters</a></li>
@@ -14113,7 +14181,13 @@ window.addEventListener('scroll', () => {
    ============================================================ */
 const HIDDEN_PAGES = ['ranked'];        // built, but not for the public yet
 
+function toggleNav() {
+  var links = document.querySelector('.nav-links'), btn = document.getElementById('nav-toggle');
+  var open = links.classList.toggle('open');
+  if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
 function showPage(name) {
+  var navLinks = document.querySelector('.nav-links'); if (navLinks) navLinks.classList.remove('open');
   if (HIDDEN_PAGES.includes(name)) return false;
   const current = document.querySelector('section.active');
   const next = document.getElementById(name);
