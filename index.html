@@ -627,99 +627,168 @@ section.active      { display: block; }
   overflow-y: auto;
 }
 
+/* Glossary launcher — stays in the patch-history sidebar. */
 .glossary-toggle-btn {
+  width: 100%;
   font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  text-transform: none;
-  padding: 0.35rem 0.8rem;
-  border-radius: 20px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface2);
+  background: #0e0e0e;
   color: var(--color-accent);
   cursor: pointer;
-  text-align: center;
-  width: 100%;
-  transition: all 0.15s;
+  transition: border-color .18s ease, background .18s ease;
 }
-.glossary-toggle-btn:hover { background: var(--color-surface3); }
+.glossary-toggle-btn:hover, .glossary-toggle-btn:focus-visible { border-color: var(--color-accent); background: #191010; }
 
-#glossary-panel {
+/* Full-width, self-contained glossary dialog. */
+.glossary-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 6500;
   display: none;
+  padding: max(20px, 4vh) 16px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.84);
+  backdrop-filter: blur(6px);
+}
+.glossary-overlay.open { display: flex; }
+.glossary-dialog {
+  display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-top: 4px;
+  width: min(1040px, 100%);
+  max-height: min(880px, 92dvh);
+  min-height: 0;
+  overflow: hidden;
+  background: #090909;
+  border: 1px solid #292020;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 80px rgba(0,0,0,.8);
 }
-
-.glossary-panel-header {
-  padding: 6px 0;
+.glossary-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 1.2rem 1.5rem 1rem;
+  border-bottom: 1px solid #242424;
+  flex: 0 0 auto;
 }
-
-.glossary-panel-body {
-  padding: 4px 0;
-  overflow-y: auto;
-  max-height: calc(100vh - 220px);
+.glossary-modal-eyebrow { color: var(--color-accent); text-transform: uppercase; letter-spacing: .17em; font-weight: 700; font-size: .66rem; }
+.glossary-modal-header h2 { margin-top: .18rem; font-size: 1.65rem; }
+.glossary-modal-header p { font-size: .78rem; color: var(--color-muted); line-height: 1.4; margin-top: .3rem; }
+.glossary-close {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #313131;
+  border-radius: 50%;
+  background: #141414;
+  color: #ddd;
+  font-size: 1rem;
+  cursor: pointer;
 }
-
+.glossary-close:hover, .glossary-close:focus-visible { border-color: var(--color-accent); color: #fff; }
+.glossary-modal-tools { padding: .9rem 1.5rem .8rem; border-bottom: 1px solid #242424; flex: 0 0 auto; }
+.glossary-search-row { display: flex; gap: .6rem; }
+.glossary-search-box { position: relative; display: block; flex: 1; min-width: 0; }
+.glossary-search-box svg { position: absolute; width: 19px; height: 19px; top: 50%; left: .8rem; transform: translateY(-50%); color: #777; pointer-events: none; }
 #glossary-search {
   width: 100%;
-  padding: 0.5rem 0.7rem;
+  padding: .65rem .9rem .65rem 2.35rem;
   border-radius: var(--radius);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface2);
-  color: var(--color-text);
-  font-size: 0.78rem;
+  background: #101010;
+  border: 1px solid #303030;
+  outline: none;
+  color: #fff;
   font-family: var(--font-body);
-  box-sizing: border-box;
+  font-size: .86rem;
 }
-#glossary-search:focus { outline: none; border-color: var(--color-accent); }
-
-#glossary-content {
+#glossary-search:focus { border-color: var(--color-accent); }
+#glossary-search::placeholder { color: #888; }
+.glossary-clear {
+  border-radius: var(--radius);
+  background: #141414;
+  color: #ccc;
+  border: 1px solid #303030;
+  padding: 0 .75rem;
+  font: 600 .77rem var(--font-body);
+  cursor: pointer;
+}
+.glossary-clear:hover { border-color: #777; color: #fff; }
+.glossary-clear[hidden] { display: none; }
+.glossary-filters {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: .4rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding: .7rem 0 .2rem;
 }
-
+.glossary-filter {
+  flex: 0 0 auto;
+  border: 1px solid #303030;
+  border-radius: 999px;
+  padding: .34rem .7rem;
+  background: #141414;
+  color: #a9a9a9;
+  font: 600 .72rem var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.glossary-filter:hover { border-color: #666; color: #fff; }
+.glossary-filter.active { background: #321414; border-color: var(--color-accent); color: #fff; }
+.glossary-result-count { margin-top: .35rem; color: #888; font-size: .68rem; min-height: 1.15em; }
+.glossary-scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 1.1rem 1.5rem 1.6rem; scrollbar-color: #4d2525 #111; }
+.glossary-section { margin-bottom: 1.3rem; }
 .glossary-section-title {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text);
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 4px;
-  margin-bottom: 8px;
-  margin-top: 16px;
-  display: block;
-}
-
-.glossary-entry {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  margin-bottom: 4px;
+  align-items: center;
+  gap: .65rem;
+  font: 700 .78rem var(--font-heading);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: .65rem;
 }
-
-.glossary-term {
-  font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: 0.04em;
+.glossary-section-title::after { content: ''; flex: 1; height: 1px; background: #292020; }
+.glossary-section-count { font-size: .68rem; letter-spacing: 0; color: #858585; font-weight: 400; order: 1; }
+.glossary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; align-items: start; }
+.glossary-entry {
+  min-width: 0;
+  background: #101010;
+  border: 1px solid #252525;
+  border-radius: var(--radius);
+  padding: .9rem 1rem;
+  transition: border-color .15s;
 }
-
-.glossary-def {
-  font-size: 0.78rem;
-  color: var(--color-text);
-  opacity: 0.75;
-  line-height: 1.6;
+.glossary-entry:hover { border-color: #493030; }
+.glossary-term { color: #f0f0f0; font: 700 .94rem var(--font-heading); line-height: 1.3; margin-bottom: .4rem; }
+.glossary-def { font: 400 .79rem/1.55 var(--font-body); color: #c0c0c0; overflow-wrap: anywhere; white-space: pre-line; }
+.glossary-details { margin-top: .6rem; }
+.glossary-details summary { color: #d65a52; font: 600 .73rem var(--font-heading); cursor: pointer; width: fit-content; list-style: none; }
+.glossary-details summary::-webkit-details-marker { display: none; }
+.glossary-details summary::after { content: ' +'; }
+.glossary-details[open] summary::after { content: ' −'; }
+.glossary-details > .glossary-def { margin-top: .6rem; padding-top: .65rem; border-top: 1px solid #272727; }
+.glossary-empty { padding: 2.4rem .9rem; text-align: center; color: var(--color-muted); font-size: .9rem; }
+.glossary-empty[hidden], .glossary-section[hidden], .glossary-entry[hidden] { display: none; }
+@media (max-width: 650px) {
+  .glossary-overlay { padding: 0; align-items: stretch; }
+  .glossary-dialog { width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; border: 0; }
+  .glossary-modal-header { padding: 1rem 1rem .75rem; }
+  .glossary-modal-tools { padding: .7rem 1rem; }
+  .glossary-scroll { padding: 1rem; }
+  .glossary-grid { grid-template-columns: 1fr; }
+  .glossary-modal-header h2 { font-size: 1.35rem; }
 }
-
-.glossary-entry.hidden { display: none; }
+@media (prefers-reduced-motion: reduce) { .glossary-filter, .glossary-entry { transition: none; } }
 
 /* Search box */
 .history-search {
@@ -4833,6 +4902,35 @@ footer {
   </div>
 </div>
 
+<!-- GLOSSARY MODAL — full-width, searchable reference with expandable definitions -->
+<div id="glossary-overlay" class="glossary-overlay" aria-hidden="true" onclick="closeGlossary(event)">
+  <div id="glossary-dialog" class="glossary-dialog" role="dialog" aria-modal="true" aria-labelledby="glossary-title" tabindex="-1">
+    <div class="glossary-modal-header">
+      <div>
+        <div class="glossary-modal-eyebrow">Game reference</div>
+        <h2 id="glossary-title">Glossary</h2>
+        <p>Find definitions for movement, weapons, abilities, and game mechanics.</p>
+      </div>
+      <button type="button" class="glossary-close" onclick="closeGlossary()" aria-label="Close glossary">✕</button>
+    </div>
+    <div class="glossary-modal-tools">
+      <div class="glossary-search-row">
+        <label for="glossary-search" class="glossary-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7"/><path d="m16 16 5 5"/></svg>
+          <input type="search" id="glossary-search" placeholder="Search terms or definitions..." autocomplete="off" oninput="filterGlossary(this.value)">
+        </label>
+        <button id="glossary-clear" type="button" class="glossary-clear" onclick="clearGlossarySearch()" hidden>Clear</button>
+      </div>
+      <div id="glossary-filters" class="glossary-filters" role="group" aria-label="Glossary categories"></div>
+      <div id="glossary-result-count" class="glossary-result-count" aria-live="polite" role="status"></div>
+    </div>
+    <div class="glossary-scroll" tabindex="0">
+      <div id="glossary-content"></div>
+      <div id="glossary-empty" class="glossary-empty" hidden>No matching terms. Try a different search or category.</div>
+    </div>
+  </div>
+</div>
+
 <section id="history">
   <div class="section-header">
     <p class="section-label">Timeline</p>
@@ -4844,17 +4942,7 @@ footer {
 
     <!-- SIDEBAR -->
     <div class="patch-sidebar">
-      <button class="glossary-toggle-btn" onclick="toggleGlossary()">Glossary</button>
-
-      <!-- GLOSSARY PANEL -->
-      <div id="glossary-panel" style="display:none;">
-        <div class="glossary-panel-header">
-          <input type="text" id="glossary-search" placeholder="Search terms..." oninput="filterGlossary(this.value)">
-        </div>
-        <div class="glossary-panel-body">
-          <div id="glossary-content"></div>
-        </div>
-      </div>
+      <button type="button" class="glossary-toggle-btn" onclick="toggleGlossary()" aria-haspopup="dialog" aria-expanded="false" aria-controls="glossary-dialog">Glossary</button>
 
       <!-- LEGEND -->
 
@@ -5323,7 +5411,7 @@ footer {
         
         <div class="item-type-row"><div class="item-type" data-eid="Wraith::item3.type">Ability 4</div><div class="rank-btns"><button class="rank-btn" onclick="setAbilityRank(this,'',0)">1</button><button class="rank-btn" onclick="setAbilityRank(this,'',1)">2</button><button class="rank-btn" onclick="setAbilityRank(this,'',2)">3</button></div></div>
         <div class="item-name" data-eid="Wraith::item3.name">Supernova</div>
-        <div class="item-notes" data-eid="Wraith::item3.notes">Shroud yourself with energy that increases your attack speed for a short time.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="wraith.abilities.supernova.main.cooldown-of-seconds">Cooldown of <span class="rank-values-group"><span class="rank-val" data-rank="0">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="1">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="2">…</span></span> seconds</li><li data-stat="wraith.abilities.supernova.main.max-hits-of">Max Hits of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Super Nova Cloud</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="wraith.abilities.supernova.super-nova-cloud.duration-of-seconds">Duration of <span class="rank-values-group"><span class="rank-val" data-rank="0">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="1">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="2">…</span></span> seconds</li></ul><p style="margin: 1rem 0px 0.3rem;"><i>While inside Super Nova, Wraith's melee damage per swing is adjusted to 70, and gains&nbsp;<span class="rank-values-group" style=""><span class="rank-val" data-rank="0">0</span><span class="rank-sep" style="">|</span><span class="rank-val" data-rank="1">0</span><span class="rank-sep" style="">|</span><span class="rank-val" data-rank="2">10</span></span>% melee damage increase.</i></p></div>
+        <div class="item-notes" data-eid="Wraith::item3.notes">Supernova light swings are slower (about 0.9s between swings vs. 0.6s normally), but each delivers up to 3 hits of 70 damage.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="wraith.abilities.supernova.main.cooldown-of-seconds">Cooldown of <span class="rank-values-group"><span class="rank-val" data-rank="0">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="1">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="2">…</span></span> seconds</li><li data-stat="wraith.abilities.supernova.main.max-hits-of">Max Hits of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Super Nova Cloud</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="wraith.abilities.supernova.super-nova-cloud.duration-of-seconds">Duration of <span class="rank-values-group"><span class="rank-val" data-rank="0">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="1">…</span><span class="rank-sep">|</span><span class="rank-val" data-rank="2">…</span></span> seconds</li></ul><p style="margin: 1rem 0px 0.3rem;"><i>While inside Super Nova, Wraith's melee damage per swing is adjusted to 70, and gains&nbsp;<span class="rank-values-group" style=""><span class="rank-val" data-rank="0">0</span><span class="rank-sep" style="">|</span><span class="rank-val" data-rank="1">0</span><span class="rank-sep" style="">|</span><span class="rank-val" data-rank="2">10</span></span>% melee damage increase.</i></p></div>
       </div>
     </div>
   
@@ -5402,7 +5490,7 @@ footer {
     </div>
   
     <!-- TRAVERSAL PASSIVE -->
-    <div class="sv-passive" style="border-top:1px solid var(--color-border);background:#0f0f0f;padding:1.2rem 2rem;display:flex;gap:1.4rem;align-items:flex-start;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/thumbnails/thumb_mnstr_rocky.png" alt="Behemoth" style="width:150px;flex:0 0 150px;border-radius:8px;border:1px solid var(--color-border);display:block;"><div style="flex:1;min-width:0;"><div style="margin-bottom:0.4rem;"><span style="background:var(--cl-monster);color:#fff;padding:0.16rem 0.55rem;border-radius:3px;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;">PASSIVE</span></div><div class="item-name" data-eid="Behemoth::passive.name">Living Fortress</div><div class="item-notes" data-eid="Behemoth::passive.notes">Taking damage builds stacks of damage reduction.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li>Gains 1 stack for every 65 damage taken</li><li>Each stack decays at 75 damage per second</li><li>Damage Reduction of +3% per stack</li><li>Stack last for a duration of 6 seconds</li><li>Maximum of 15 stacks (45% Damage Reduction)</li></ul></div></div></div>
+    <div class="sv-passive" style="border-top:1px solid var(--color-border);background:#0f0f0f;padding:1.2rem 2rem;display:flex;gap:1.4rem;align-items:flex-start;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/thumbnails/thumb_mnstr_rocky.png" alt="Behemoth" style="width:150px;flex:0 0 150px;border-radius:8px;border:1px solid var(--color-border);display:block;"><div style="flex:1;min-width:0;"><div style="margin-bottom:0.4rem;"><span style="background:var(--cl-monster);color:#fff;padding:0.16rem 0.55rem;border-radius:3px;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;">PASSIVE</span></div><div class="item-name" data-eid="Behemoth::passive.name">Living Fortress</div><div class="item-notes" data-eid="Behemoth::passive.notes">Damage drains a 65-point meter that refills at 75 points/sec. Emptying it grants a damage-reduction stack lasting 6 seconds.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li>Gains 1 stack for every 65 damage taken</li><li>Passive meter refills at 75 damage per second</li><li>Damage Reduction of +3% per stack</li><li>Stack last for a duration of 6 seconds</li><li>Maximum of 15 stacks (45% Damage Reduction)</li></ul></div></div></div>
 
     <!-- TRAVERSAL IMAGE BLOCK -->
     <div style="width:100%;border-top:1px solid var(--color-border);overflow:hidden;line-height:0;background:#000000;height:283px;">
@@ -5478,7 +5566,7 @@ footer {
     </div>
   
     <!-- TRAVERSAL PASSIVE -->
-    <div class="sv-passive" style="border-top:1px solid var(--color-border);background:#0f0f0f;padding:1.2rem 2rem;display:flex;gap:1.4rem;align-items:flex-start;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/thumbnails/thumb_mnstr_rockybobcicle.png" alt="Glacial Behemoth" style="width:150px;flex:0 0 150px;border-radius:8px;border:1px solid var(--color-border);display:block;"><div style="flex:1;min-width:0;"><div style="margin-bottom:0.4rem;"><span style="background:var(--cl-monster);color:#fff;padding:0.16rem 0.55rem;border-radius:3px;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;">PASSIVE</span></div><div class="item-name" data-eid="Glacial Behemoth::passive.name">Living Fortress</div><div class="item-notes" data-eid="Glacial Behemoth::passive.notes">Start with full damage reduction stacks, lose stacks the more damage is taken.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li>Permanent Damage Reduction of +60%</li><li>Loses 1 stack of armor for every 90 damage taken</li><li>Each stack decays at 20 damage per second</li><li>Damage Reduction of -4% per stack</li><li>Stack last for a duration of 7 seconds</li><li>Maximum of 15 stacks (armor fully broken)</li></ul></div></div></div>
+    <div class="sv-passive" style="border-top:1px solid var(--color-border);background:#0f0f0f;padding:1.2rem 2rem;display:flex;gap:1.4rem;align-items:flex-start;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/thumbnails/thumb_mnstr_rockybobcicle.png" alt="Glacial Behemoth" style="width:150px;flex:0 0 150px;border-radius:8px;border:1px solid var(--color-border);display:block;"><div style="flex:1;min-width:0;"><div style="margin-bottom:0.4rem;"><span style="background:var(--cl-monster);color:#fff;padding:0.16rem 0.55rem;border-radius:3px;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;">PASSIVE</span></div><div class="item-name" data-eid="Glacial Behemoth::passive.name">Living Fortress</div><div class="item-notes" data-eid="Glacial Behemoth::passive.notes">Starts at full resistance. Damage drains a 90-point meter per lost stack; the meter refills at 20 points/sec and stacks last 7 seconds.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li>Permanent Damage Reduction of +60%</li><li>Loses 1 stack of armor for every 90 damage taken</li><li>Passive meter refills at 20 damage per second</li><li>Damage Reduction of -4% per stack</li><li>Stack last for a duration of 7 seconds</li><li>Maximum of 15 stacks (armor fully broken)</li></ul></div></div></div>
 
     <!-- TRAVERSAL IMAGE BLOCK -->
     <div style="width:100%;border-top:1px solid var(--color-border);overflow:hidden;line-height:0;background:#000000;height:283px;">
@@ -5674,7 +5762,7 @@ footer {
         
         <div class="item-type" data-eid="Blitz Markov::item2.type">Special Ability</div>
         <div class="item-name" data-eid="Blitz Markov::item2.name">Tesla Mine</div>
-        <div class="item-notes" data-eid="Blitz Markov::item2.notes">Plants a mine that charges over time to increase its explosive damage.<br><br> The mine progresses through four colors — <span style="color:#3b82f6;">blue</span>, <span style="color:#a855f7;">purple</span>, <span style="color:#ef4444;">red</span>, and <span style="color:#eab308;">gold</span> — with each stage dealing increased damage and expanding its trigger radius.<br><br>Plants a mine that charges over time to increase its explosive damage.<ul style="margin:0 0 0.6rem 0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.main.explosion-radius-of-meters">Explosion Radius of … meters</li><li data-stat="blitz-markov.abilities.tesla-mine.main.tesla-mine-health-of">Tesla Mine Health of …</li><li data-stat="blitz-markov.abilities.tesla-mine.main.maximum-of-tesla-mine-in-the-world">Maximum of … Tesla Mine in the world</li><li data-stat="blitz-markov.abilities.tesla-mine.main.arm-time-of-seconds">Arm Time of … seconds</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Deployment</p><ul style="margin:0 0 0.6rem 0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.deployment.toss-distance-of-meters">Toss Distance of … meters</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.minimum-spacing-of-meters-between-mines">Minimum Spacing of … meters between mines</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.toss-duration-of-seconds">Toss Duration of … seconds</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.reload-delay-of-seconds">Reload Delay of … seconds</li></ul><div style="display:flex;flex-direction:column;gap:0.6rem;"><div style="border-left:3px solid #3b82f6;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#3b82f6;">Blue mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.blue-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.blue-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div><div style="border-left:3px solid #a855f7;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#a855f7;">Purple mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.purple-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.purple-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div><div style="border-left:3px solid #ef4444;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#ef4444;">Red mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.red-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.red-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div><div style="border-left:3px solid #eab308;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#eab308;">Gold mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.gold-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.gold-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div></div></div>
+        <div class="item-notes" data-eid="Blitz Markov::item2.notes">Mines upgrade every 4 seconds: <span style="color:#3b82f6;">blue</span> at 4s (300 damage), <span style="color:#a855f7;">purple</span> at 8s (450), <span style="color:#ef4444;">red</span> at 12s (600) and <span style="color:#eab308;">gold</span> at 16s (750).<ul style="margin:0 0 0.6rem 0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.main.explosion-radius-of-meters">Explosion Radius of … meters</li><li data-stat="blitz-markov.abilities.tesla-mine.main.tesla-mine-health-of">Tesla Mine Health of …</li><li data-stat="blitz-markov.abilities.tesla-mine.main.maximum-of-tesla-mine-in-the-world">Maximum of … Tesla Mine in the world</li><li data-stat="blitz-markov.abilities.tesla-mine.main.arm-time-of-seconds">Arm Time of … seconds</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Deployment</p><ul style="margin:0 0 0.6rem 0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.deployment.toss-distance-of-meters">Toss Distance of … meters</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.minimum-spacing-of-meters-between-mines">Minimum Spacing of … meters between mines</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.toss-duration-of-seconds">Toss Duration of … seconds</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="blitz-markov.abilities.tesla-mine.deployment.reload-delay-of-seconds">Reload Delay of … seconds</li></ul><div style="display:flex;flex-direction:column;gap:0.6rem;"><div style="border-left:3px solid #3b82f6;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#3b82f6;">Blue mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.blue-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.blue-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div><div style="border-left:3px solid #a855f7;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#a855f7;">Purple mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.purple-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.purple-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div><div style="border-left:3px solid #ef4444;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#ef4444;">Red mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.red-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.red-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div><div style="border-left:3px solid #eab308;padding-left:0.75rem;"><p style="margin:0 0 0.2rem;font-weight:700;color:#eab308;">Gold mine</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="blitz-markov.abilities.tesla-mine.gold-mine.damage-of-per-explosion">Damage of … per explosion</li><li data-stat="blitz-markov.abilities.tesla-mine.gold-mine.trigger-radius-of-meters">Trigger Radius of … meters</li></ul></div></div></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -6243,7 +6331,7 @@ footer {
         
         <div class="item-type" data-eid="Slim::item0.type">Primary</div>
         <div class="item-name" data-eid="Slim::item0.name">Leech Gun</div>
-        <div class="item-notes" data-eid="Slim::item0.notes">Shots siphon energy from enemies. Siphoned energy recharges your healing burst.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="slim.abilities.leech-gun.main.damage-of-per-pellet">Damage of … per pellet</li><li data-stat="slim.abilities.leech-gun.main.pellet-count-of-per-shot">Pellet count of … per shot</li><li data-stat="slim.abilities.leech-gun.main.recharges-the-class-ability-by-seconds-per-pellet-hit">Recharges the class ability by … seconds per pellet hit</li><li data-stat="slim.abilities.leech-gun.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="slim.abilities.leech-gun.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="slim.abilities.leech-gun.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><details style="margin-top:0.7rem;"><summary style="font-weight:700;cursor:pointer;">Spread</summary><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Hip Fire</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="slim.abilities.leech-gun.hip-fire.minimum-spread-of">Minimum Spread of …</li><li data-stat="slim.abilities.leech-gun.hip-fire.maximum-spread-of">Maximum Spread of …</li><li data-stat="slim.abilities.leech-gun.hip-fire.attack-spread-of-per-shot">Attack Spread of … per shot</li><li data-stat="slim.abilities.leech-gun.hip-fire.spread-decay-of">Spread Decay of …</li><li data-stat="slim.abilities.leech-gun.hip-fire.movement-spread-of">Movement Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.hip-fire.rotation-spread-of">Rotation Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.hip-fire.jump-spread-of">Jump Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.hip-fire.jetpack-spread-of">Jetpack Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Aim Down Sights</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="slim.abilities.leech-gun.aim-down-sights.minimum-spread-modifier-of">Minimum Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.maximum-spread-modifier-of">Maximum Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.attack-spread-modifier-of">Attack Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.spread-decay-modifier-of">Spread Decay Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.movement-spread-modifier-of">Movement Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.rotation-spread-modifier-of">Rotation Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.jump-spread-modifier-of">Jump Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li></ul></details></div>
+        <div class="item-notes" data-eid="Slim::item0.notes">Pellet hits recharge Heal Burst by 2 seconds each, capped at 6 seconds per shot.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="slim.abilities.leech-gun.main.damage-of-per-pellet">Damage of … per pellet</li><li data-stat="slim.abilities.leech-gun.main.pellet-count-of-per-shot">Pellet count of … per shot</li><li data-stat="slim.abilities.leech-gun.main.recharges-the-class-ability-by-seconds-per-pellet-hit">Recharges the class ability by … seconds per pellet hit</li><li data-stat="slim.abilities.leech-gun.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="slim.abilities.leech-gun.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="slim.abilities.leech-gun.main.reload-time-of-seconds">Reload Time of … seconds</li><li>Maximum Heal Burst cooldown reduction of 6 seconds per shot</li></ul><details style="margin-top:0.7rem;"><summary style="font-weight:700;cursor:pointer;">Spread</summary><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Hip Fire</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="slim.abilities.leech-gun.hip-fire.minimum-spread-of">Minimum Spread of …</li><li data-stat="slim.abilities.leech-gun.hip-fire.maximum-spread-of">Maximum Spread of …</li><li data-stat="slim.abilities.leech-gun.hip-fire.attack-spread-of-per-shot">Attack Spread of … per shot</li><li data-stat="slim.abilities.leech-gun.hip-fire.spread-decay-of">Spread Decay of …</li><li data-stat="slim.abilities.leech-gun.hip-fire.movement-spread-of">Movement Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.hip-fire.rotation-spread-of">Rotation Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.hip-fire.jump-spread-of">Jump Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.hip-fire.jetpack-spread-of">Jetpack Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Aim Down Sights</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="slim.abilities.leech-gun.aim-down-sights.minimum-spread-modifier-of">Minimum Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.maximum-spread-modifier-of">Maximum Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.attack-spread-modifier-of">Attack Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.spread-decay-modifier-of">Spread Decay Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.movement-spread-modifier-of">Movement Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.rotation-spread-modifier-of">Rotation Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="slim.abilities.leech-gun.aim-down-sights.jump-spread-modifier-of">Jump Spread Modifier of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li></ul></details></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -6309,7 +6397,7 @@ footer {
         
         <div class="item-type" data-eid="Emet::item1.type">Secondary</div>
         <div class="item-name" data-eid="Emet::item1.name">Healing Buoy</div>
-        <div class="item-notes" data-eid="Emet::item1.notes">Deploy a floating buoy that heals nearby allies over time. Using your healing burst causes an additional healing burst to fire from your buoys.<p style="margin:0.7rem 0 0.2rem;font-weight:700;">Continuous Healing</p><ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="emet.abilities.healing-buoy.continuous-healing.normal-healing-for-teammates-of-per-second">Normal Healing for teammates of … per second</li><li data-stat="emet.abilities.healing-buoy.continuous-healing.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="emet.abilities.healing-buoy.continuous-healing.incapacitated-healing-for-teammates-of-per-second">Incapacitated Healing for teammates of … per second</li><li data-stat="emet.abilities.healing-buoy.continuous-healing.update-tick-frequency-of.2">Update Tick Frequency of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Healing Pulse (Class Ability)</p><ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="emet.abilities.healing-buoy.healing-pulse-class-ability.normal-healing-for-teammates-of">Normal Healing for teammates of …</li><li data-stat="emet.abilities.healing-buoy.healing-pulse-class-ability.incapacitated-healing-for-teammates-of">Incapacitated Healing for teammates of …</li><li data-stat="emet.abilities.healing-buoy.healing-pulse-class-ability.healing-for-self-of">Healing for self of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Buoy</p><ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="emet.abilities.healing-buoy.buoy.radius-of-meters">Radius of … meters</li><li data-stat="emet.abilities.healing-buoy.buoy.arm-time-of-second-after-landing">Arm Time of … second after landing</li><li data-stat="emet.abilities.healing-buoy.buoy.throw-cooldown-of-seconds">Throw Cooldown of … seconds</li><li data-stat="emet.abilities.healing-buoy.buoy.totem-health-of">Totem Health of …</li></ul></div>
+        <div class="item-notes" data-eid="Emet::item1.notes">Deploy Healing Buoys that heal allies; Healing Burst triggers an extra healing pulse from each buoy.<p style="margin:0.7rem 0 0.2rem;font-weight:700;">Continuous Healing</p><ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="emet.abilities.healing-buoy.continuous-healing.normal-healing-for-teammates-of-per-second">Normal Healing for teammates of … per second</li><li data-stat="emet.abilities.healing-buoy.continuous-healing.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="emet.abilities.healing-buoy.continuous-healing.incapacitated-healing-for-teammates-of-per-second">Incapacitated Healing for teammates of … per second</li><li data-stat="emet.abilities.healing-buoy.continuous-healing.update-tick-frequency-of.2">Update Tick Frequency of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Healing Pulse (Class Ability)</p><ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="emet.abilities.healing-buoy.healing-pulse-class-ability.normal-healing-for-teammates-of">Normal Healing for teammates of …</li><li data-stat="emet.abilities.healing-buoy.healing-pulse-class-ability.incapacitated-healing-for-teammates-of">Incapacitated Healing for teammates of …</li><li data-stat="emet.abilities.healing-buoy.healing-pulse-class-ability.healing-for-self-of">Healing for self of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Buoy</p><ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="emet.abilities.healing-buoy.buoy.radius-of-meters">Radius of … meters</li><li data-stat="emet.abilities.healing-buoy.buoy.arm-time-of-second-after-landing">Arm Time of … second after landing</li><li data-stat="emet.abilities.healing-buoy.buoy.throw-cooldown-of-seconds">Throw Cooldown of … seconds</li><li data-stat="emet.abilities.healing-buoy.buoy.totem-health-of">Totem Health of …</li><li>Maximum of 3 active Healing Buoys</li></ul></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -6359,7 +6447,7 @@ footer {
         
         <div class="item-type" data-eid="Paladin Parnell::item0.type">Primary</div>
         <div class="item-name" data-eid="Paladin Parnell::item0.name">Mutagen Shotgun</div>
-        <div class="item-notes" data-eid="Paladin Parnell::item0.notes">Short range shotgun that lowers your Heal Burst cooldown after hitting a target.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.damage-of-per-pellet">Damage of … per pellet</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.pellet-count-of-per-shot">Pellet count of … per shot</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.recharges-the-class-ability-by-seconds-per-leech">Recharges the class ability by … seconds per leech</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.maximum-cooldown-reduction-of-seconds-per-shot">Maximum Cooldown Reduction of … seconds per shot</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><details style="margin-top:0.7rem;"><summary style="font-weight:700;cursor:pointer;">Spread</summary><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Hip Fire</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.minimum-spread-of">Minimum Spread of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.maximum-spread-of">Maximum Spread of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.attack-spread-of-per-shot">Attack Spread of … per shot</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.spread-decay-of">Spread Decay of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.movement-spread-of">Movement Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.rotation-spread-of">Rotation Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.jump-spread-of">Jump Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.jetpack-spread-of">Jetpack Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li></ul></details></div>
+        <div class="item-notes" data-eid="Paladin Parnell::item0.notes">Shotgun hits reduce Heal Burst’s 15-second cooldown, by up to 3.6 seconds per shot.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.damage-of-per-pellet">Damage of … per pellet</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.pellet-count-of-per-shot">Pellet count of … per shot</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.recharges-the-class-ability-by-seconds-per-leech">Recharges the class ability by … seconds per leech</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.maximum-cooldown-reduction-of-seconds-per-shot">Maximum Cooldown Reduction of … seconds per shot</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><details style="margin-top:0.7rem;"><summary style="font-weight:700;cursor:pointer;">Spread</summary><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Hip Fire</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.minimum-spread-of">Minimum Spread of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.maximum-spread-of">Maximum Spread of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.attack-spread-of-per-shot">Attack Spread of … per shot</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.spread-decay-of">Spread Decay of …</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.movement-spread-of">Movement Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.rotation-spread-of">Rotation Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.jump-spread-of">Jump Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li><li data-stat="paladin-parnell.abilities.mutagen-shotgun.hip-fire.jetpack-spread-of">Jetpack Spread of <span style="color:var(--cl-medic);font-weight:700;">&times;</span>…</li></ul></details></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -6475,7 +6563,7 @@ footer {
         
         <div class="item-type" data-eid="Tech Sergeant Hank::item0.type">Primary</div>
         <div class="item-name" data-eid="Tech Sergeant Hank::item0.name">Laser Cannon</div>
-        <div class="item-notes" data-eid="Tech Sergeant Hank::item0.notes">Projects a solid laser beam at your enemy.  Battery recharges after use.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.damage-of-per-tick">Damage of … per tick</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.range-of-meters">Range of … meters</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.minimum-ammo-to-fire-of">Minimum Ammo to Fire of …</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.ammo-is-consumed-every-seconds">… Ammo is consumed every … seconds</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.reload-delay-of-second-when-not-fully-emptied">Reload Delay of … second when not fully emptied</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.reload-delay-of-second-when-fully-emptied">Reload Delay of … second when fully emptied</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.wind-up-of-seconds-before-the-beam-deals-damage">Wind-up of … seconds before the beam deals damage</li></ul></div>
+        <div class="item-notes" data-eid="Tech Sergeant Hank::item0.notes">Laser deals 5 ticks/sec at 14 damage each (70 DPS), after a 0.34-second wind-up.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.damage-of-per-tick">Damage of … per tick</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.range-of-meters">Range of … meters</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.minimum-ammo-to-fire-of">Minimum Ammo to Fire of …</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.ammo-is-consumed-every-seconds">… Ammo is consumed every … seconds</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.reload-delay-of-second-when-not-fully-emptied">Reload Delay of … second when not fully emptied</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.reload-delay-of-second-when-fully-emptied">Reload Delay of … second when fully emptied</li><li data-stat="tech-sergeant-hank.abilities.laser-cannon.main.wind-up-of-seconds-before-the-beam-deals-damage">Wind-up of … seconds before the beam deals damage</li></ul></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -6483,7 +6571,7 @@ footer {
         
         <div class="item-type" data-eid="Tech Sergeant Hank::item1.type">Secondary</div>
         <div class="item-name" data-eid="Tech Sergeant Hank::item1.name">Shield Charger</div>
-        <div class="item-notes" data-eid="Tech Sergeant Hank::item1.notes">Grants a teammate a shield that lasts until it's damaged. The longer you fire the charger, the stronger the shield. Once you've shielded one teammate, shield another!<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.range-of-meters">Range of … meters</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.acquire-angle-of">Acquire Angle of …<span style="font-weight:700;">&deg;</span></li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.maintain-angle-of">Maintain Angle of …<span style="font-weight:700;">&deg;</span></li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.minimum-ammo-to-fire-of">Minimum Ammo to Fire of …</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.reload-delay-of-seconds-when-not-fully-emptied">Reload Delay of … seconds when not fully emptied</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.reload-delay-of-seconds-when-fully-emptied">Reload Delay of … seconds when fully emptied</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Shield Charge Rate</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.shield-charger.shield-charge-rate.shield-of-per-second">Shield of … per second</li></ul></div>
+        <div class="item-notes" data-eid="Tech Sergeant Hank::item1.notes">Builds lasting ally shields at 50 shield/sec, to 800 maximum (1,000 for Lennox).<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.range-of-meters">Range of … meters</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.acquire-angle-of">Acquire Angle of …<span style="font-weight:700;">&deg;</span></li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.maintain-angle-of">Maintain Angle of …<span style="font-weight:700;">&deg;</span></li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.minimum-ammo-to-fire-of">Minimum Ammo to Fire of …</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.reload-delay-of-seconds-when-not-fully-emptied">Reload Delay of … seconds when not fully emptied</li><li data-stat="tech-sergeant-hank.abilities.shield-charger.main.reload-delay-of-seconds-when-fully-emptied">Reload Delay of … seconds when fully emptied</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Shield Charge Rate</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.shield-charger.shield-charge-rate.shield-of-per-second">Shield of … per second</li></ul></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -6499,7 +6587,7 @@ footer {
         
         <div class="item-type" data-eid="Tech Sergeant Hank::item3.type">Class Ability</div>
         <div class="item-name" data-eid="Tech Sergeant Hank::item3.name">Shield Burst</div>
-        <div class="item-notes" data-eid="Tech Sergeant Hank::item3.notes">Weak shield with a large area of effect. The shield stays active until damaged.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.shield-of-for-self-and-teammates">Shield of … for self and teammates</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.shield-decay-of-per-second-for-self-and-teammates">Shield Decay of … per second for self and teammates</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.radius-of-meters">Radius of … meters</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.active-duration-of-second">Active Duration of … second</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.cooldown-of-seconds">Cooldown of … seconds</li></ul></div>
+        <div class="item-notes" data-eid="Tech Sergeant Hank::item3.notes">Instantly grants Hank and nearby teammates 300 shield each, with no decay.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.shield-of-for-self-and-teammates">Shield of … for self and teammates</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.shield-decay-of-per-second-for-self-and-teammates">Shield Decay of … per second for self and teammates</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.radius-of-meters">Radius of … meters</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.active-duration-of-second">Active Duration of … second</li><li data-stat="tech-sergeant-hank.abilities.shield-burst.main.cooldown-of-seconds">Cooldown of … seconds</li></ul></div>
       </div>
     </div>
   
@@ -6541,7 +6629,7 @@ footer {
         
         <div class="item-type" data-eid="Bucket::item1.type">Secondary</div>
         <div class="item-name" data-eid="Bucket::item1.name">Sentry Guns</div>
-        <div class="item-notes" data-eid="Bucket::item1.notes">Places a sentry gun that automatically attacks nearby enemies.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="bucket.abilities.sentry-guns.main.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="bucket.abilities.sentry-guns.main.reload-delay-of-second">Reload Delay of … second</li><li data-stat="bucket.abilities.sentry-guns.main.maximum-of-sentry-guns-in-the-world">Maximum of … Sentry Guns in the world</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Sentry Gun</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="bucket.abilities.sentry-guns.sentry-gun.health-of">Health of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.activation-time-of-seconds">Activation Time of … seconds</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.engage-distance-of-meters">Engage Distance of … meters</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.disengage-distance-of-meters">Disengage Distance of … meters</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.damage-of-per-bullet">Damage of … per bullet</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.rate-of-fire-of">Rate of Fire of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.horizontal-spread-of">Horizontal Spread of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.vertical-spread-of">Vertical Spread of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.turn-speed-of-degrees-per-second-while-tracking-while-searching">Turn Speed of … degrees per second while tracking (… while searching)</li></ul></div>
+        <div class="item-notes" data-eid="Bucket::item1.notes">Deploy up to 3 Sentry Guns. Each fires 5 shots/sec for 8 damage per bullet (40 DPS).<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="bucket.abilities.sentry-guns.main.reload-time-of-seconds">Reload Time of … seconds</li><li data-stat="bucket.abilities.sentry-guns.main.reload-delay-of-second">Reload Delay of … second</li><li data-stat="bucket.abilities.sentry-guns.main.maximum-of-sentry-guns-in-the-world">Maximum of … Sentry Guns in the world</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Sentry Gun</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="bucket.abilities.sentry-guns.sentry-gun.health-of">Health of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.activation-time-of-seconds">Activation Time of … seconds</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.engage-distance-of-meters">Engage Distance of … meters</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.disengage-distance-of-meters">Disengage Distance of … meters</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.damage-of-per-bullet">Damage of … per bullet</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.rate-of-fire-of">Rate of Fire of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.horizontal-spread-of">Horizontal Spread of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.vertical-spread-of">Vertical Spread of …</li><li data-stat="bucket.abilities.sentry-guns.sentry-gun.turn-speed-of-degrees-per-second-while-tracking-while-searching">Turn Speed of … degrees per second while tracking (… while searching)</li></ul></div>
       </div>
       <div class="char-item-col">
         <!-- IMAGE PATH: replace src with your weapon/ability icon path -->
@@ -7109,21 +7197,21 @@ footer {
         
         <div class="item-type" data-eid="Renegade Abe::item0.type">Primary</div>
         <div class="item-name" data-eid="Renegade Abe::item0.name">&ldquo;Penitence&rdquo;</div>
-        <div class="item-notes" data-eid="Renegade Abe::item0.notes">Low damage shotgun that poisons targets. Alt-fire increases damage and spread but does not poison.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.penitence.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="renegade-abe.abilities.penitence.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="renegade-abe.abilities.penitence.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Penitence DOT</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.penitence.penitence-dot.damage-of-per-second">Damage of … per second</li><li data-stat="renegade-abe.abilities.penitence.penitence-dot.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="renegade-abe.abilities.penitence.penitence-dot.duration-of-seconds">Duration of … seconds</li></ul><details style="margin-top:0.7rem;"><summary style="font-weight:700;cursor:pointer;">Spread</summary><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Hip Fire</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.penitence.hip-fire.minimum-spread-of">Minimum Spread of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.maximum-spread-of">Maximum Spread of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.attack-spread-of-per-shot">Attack Spread of … per shot</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.spread-decay-of">Spread Decay of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.movement-spread-of">Movement Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.rotation-spread-of">Rotation Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.jump-spread-of">Jump Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.jetpack-spread-of">Jetpack Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.cooldown-time-of-seconds">Cooldown Time of … seconds</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.decay-during-cooldown-of">Decay During Cooldown of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.damage-of-per-pellet">Damage of … per pellet</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.pellet-count-of-per-shot">Pellet count of … per shot</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.alt-fire-damage-of-per-pellet">Alt-Fire Damage of … per pellet</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.alt-fire-burst-of-shots">Alt-Fire Burst of … shots</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.alt-fire-spread-of">Alt-Fire Spread of ×…</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Aim Down Sights</p></details></div>
+        <div class="item-notes" data-eid="Renegade Abe::item0.notes">Primary: 8 pellets × 9 damage (18 per headshot pellet; 72 body damage) plus 85 poison damage in two 42.5-damage ticks over 5 seconds. Alt-fire: both shells, 16 pellets × 16 damage (32 per headshot pellet; 256 body damage), without poison.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.penitence.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="renegade-abe.abilities.penitence.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="renegade-abe.abilities.penitence.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Penitence DOT</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.penitence.penitence-dot.damage-of-per-second">Damage of … per second</li><li data-stat="renegade-abe.abilities.penitence.penitence-dot.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="renegade-abe.abilities.penitence.penitence-dot.duration-of-seconds">Duration of … seconds</li></ul><details style="margin-top:0.7rem;"><summary style="font-weight:700;cursor:pointer;">Spread</summary><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Hip Fire</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.penitence.hip-fire.minimum-spread-of">Minimum Spread of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.maximum-spread-of">Maximum Spread of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.attack-spread-of-per-shot">Attack Spread of … per shot</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.spread-decay-of">Spread Decay of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.movement-spread-of">Movement Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.rotation-spread-of">Rotation Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.jump-spread-of">Jump Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.jetpack-spread-of">Jetpack Spread of <span style="color:var(--cl-assault);font-weight:700;">&times;</span>…</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.cooldown-time-of-seconds">Cooldown Time of … seconds</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.decay-during-cooldown-of">Decay During Cooldown of …</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.damage-of-per-pellet">Damage of … per pellet</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.pellet-count-of-per-shot">Pellet count of … per shot</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.alt-fire-damage-of-per-pellet">Alt-Fire Damage of … per pellet</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.alt-fire-burst-of-shots">Alt-Fire Burst of … shots</li><li data-stat="renegade-abe.abilities.penitence.hip-fire.alt-fire-spread-of">Alt-Fire Spread of ×…</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Aim Down Sights</p></details></div>
       </div>
       <div class="char-item-col">
         <div class="char-icon-frame"><img loading="lazy" decoding="async" class="icon-small" src="https://assets.modded-evolve.com/images/icons/renegadegrenade.png" alt="Corrosive Grenades"></div>
         
         <div class="item-type" data-eid="Renegade Abe::item1.type">Secondary</div>
         <div class="item-name" data-eid="Renegade Abe::item1.name">Corrosive Grenades</div>
-        <div class="item-notes" data-eid="Renegade Abe::item1.notes">Moderate damage grenade reduces the target's damage and applies poison.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.corrosive-grenades.main.damage-of-on-hit">Damage of … on hit</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.damage-output-reduction-of">Damage Output Reduction of &minus;…%</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.duration-of-seconds">Duration of … seconds</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.radius-of-meters">Radius of … meters</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.rate-of-fire-of">Rate of Fire of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Corrosive DOT</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.damage-of-per-second">Damage of … per second</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.duration-of-seconds">Duration of … seconds</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.minimum-radius-of-meters">Minimum Radius of … meters</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.maximum-radius-of-meters">Maximum Radius of … meters</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.monster-trigger-distance-of-meters">Monster Trigger Distance of … meters</li></ul></div>
+        <div class="item-notes" data-eid="Renegade Abe::item1.notes">Corrosive Grenades reduce Monster damage. Their damage-over-time ticks every 1 second and does not interrupt Monster armor regeneration.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.corrosive-grenades.main.damage-of-on-hit">Damage of … on hit</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.damage-output-reduction-of">Damage Output Reduction of &minus;…%</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.duration-of-seconds">Duration of … seconds</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.radius-of-meters">Radius of … meters</li><li data-stat="renegade-abe.abilities.corrosive-grenades.main.rate-of-fire-of">Rate of Fire of …</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Corrosive DOT</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.damage-of-per-second">Damage of … per second</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.duration-of-seconds">Duration of … seconds</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.minimum-radius-of-meters">Minimum Radius of … meters</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.maximum-radius-of-meters">Maximum Radius of … meters</li><li data-stat="renegade-abe.abilities.corrosive-grenades.corrosive-dot.monster-trigger-distance-of-meters">Monster Trigger Distance of … meters</li></ul></div>
       </div>
       <div class="char-item-col">
         <div class="char-icon-frame"><img loading="lazy" decoding="async" class="icon-small" src="https://assets.modded-evolve.com/images/icons/renegadedartgun.png" alt="Nerve Toxin Dart" style="padding:11%;"></div>
         
         <div class="item-type" data-eid="Renegade Abe::item2.type">Special Ability</div>
         <div class="item-name" data-eid="Renegade Abe::item2.name">Nerve Toxin Dart</div>
-        <div class="item-notes" data-eid="Renegade Abe::item2.notes">Moderate damage over time dart gun that increases all damage done to the Monster.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.damage-amplifier-of">Damage Amplifier of +…%</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.duration-of-seconds">Duration of … seconds</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Nerve Toxin DOT</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.nerve-toxin-dart.nerve-toxin-dot.damage-of-per-second">Damage of … per second</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.nerve-toxin-dot.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.nerve-toxin-dot.duration-of-seconds">Duration of … seconds</li></ul></div>
+        <div class="item-notes" data-eid="Renegade Abe::item2.notes">Nerve Toxin Darts increase damage taken by the Monster. Their damage-over-time ticks every 1 second and does not interrupt Monster armor regeneration.<ul style="margin:0.5rem 0 0 0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.damage-amplifier-of">Damage Amplifier of +…%</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.duration-of-seconds">Duration of … seconds</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.ammo-capacity-of">Ammo Capacity of …</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.rate-of-fire-of">Rate of Fire of …</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.main.reload-time-of-seconds">Reload Time of … seconds</li></ul><p style="margin:0.7rem 0 0.2rem;font-weight:700;">Nerve Toxin DOT</p><ul style="margin:0;padding:0;list-style:none;"><li data-stat="renegade-abe.abilities.nerve-toxin-dart.nerve-toxin-dot.damage-of-per-second">Damage of … per second</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.nerve-toxin-dot.update-tick-frequency-of">Update Tick Frequency of …</li><li data-stat="renegade-abe.abilities.nerve-toxin-dart.nerve-toxin-dot.duration-of-seconds">Duration of … seconds</li></ul></div>
       </div>
       <div class="char-item-col">
         <div class="char-icon-frame"><img loading="lazy" decoding="async" class="icon-small" src="https://assets.modded-evolve.com/images/icons/allassaultclassabilitystage2.jpg" alt="Lesser Defense Matrix"></div>
@@ -14117,6 +14205,7 @@ function closePatchModal(e) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
+    if (document.getElementById('glossary-overlay').classList.contains('open')) { closeGlossary(); return; }
     document.getElementById('patch-modal-overlay').classList.remove('open');
     document.getElementById('char-history-overlay').classList.remove('open');
     document.body.style.overflow = '';
@@ -14165,6 +14254,7 @@ const GLOSSARY = [
   { section: 'Weapon', term: 'Strike Delay', def: 'The delay between the end of the Aim State and the actual lightning strike hitting the ground' },
   { section: 'Weapon', term: 'Maintain Angle', def: 'The maximum angle a beam can be held at before it disconnects from the target' },
   { section: 'Weapon', term: 'Acceleration Direction', def: 'How quickly Behemoth accelerates toward a new direction when changing movement input while rolling' },
+  { section: 'Healing / Shield', term: 'Maximum Hunter Shield', def: 'Maximum total shield: 800 for most Hunters and 1,000 for Lennox, regardless of source' },
   { section: 'Healing / Shield', term: 'Normal Healing', def: 'The amount of healing applied to hunters who are not incapacitated' },
   { section: 'Healing / Shield', term: 'Incapacitated Healing', def: 'The amount of healing applied to hunters who are incapacitated' },
   { section: 'Spread', term: 'Minimum Spread', def: 'Minimum spread a gun can have' },
@@ -14186,68 +14276,172 @@ const GLOSSARY = [
   { section: 'Aim Down Sights Modifiers', term: 'ADS Movement Spread Modifier', def: 'Multiplier applied to Movement Spread while aiming down sights' },
   { section: 'Aim Down Sights Modifiers', term: 'ADS Rotation Spread Modifier', def: 'Multiplier applied to Rotation Spread while aiming down sights' },
   { section: 'Aim Down Sights Modifiers', term: 'ADS Jump Spread Modifier', def: 'Multiplier applied to Jump Spread while aiming down sights' },
+  { section: 'Miscellaneous', term: 'Monster Senses', def: 'Smell: 60 meters; automatic Hunter detection: 20 meters; hearing: up to 50 meters' },
+  { section: 'Miscellaneous', term: 'Weapon Swap Time', def: 'Varies by weapon and character; there is no single base swap time' },
   { section: 'Miscellaneous', term: 'Energy', def: 'The resource monsters gain by eating other organisms<br><br>As Energy accumulates it fills the Evolve Meter, allowing the monster to evolve to the next stage' },
   { section: 'Miscellaneous', term: 'Battery Weapon', def: 'A type of Hunter weapon that uses beams<br><br>Reloads without an animation but has a reload delay after the battery is depleted' },
   { section: 'Miscellaneous', term: 'Gun Weapon', def: 'A type of Hunter weapon that fires bullets<br><br>Has a reload animation but no reload delay' },
 ];
 
+// The source list above remains unchanged; the dialog builds on first use.
+let glossaryBuilt = false;
+let glossaryCategory = 'All';
+let glossaryReturnFocus = null;
+let glossaryIndex = [];
+
 function buildGlossary() {
+  if (glossaryBuilt) return;
   const container = document.getElementById('glossary-content');
-  let currentSection = '';
-  let html = '';
+  const filters = document.getElementById('glossary-filters');
+  const grouped = new Map();
   GLOSSARY.forEach(entry => {
-    if (entry.section !== currentSection) {
-      currentSection = entry.section;
-      html += `<div class="glossary-section-title">${entry.section}</div>`;
-    }
-    html += `<div class="glossary-entry" data-term="${entry.term.toLowerCase()}" data-def="${entry.def.toLowerCase().replace(/<br>/g,' ')}">
-      <div class="glossary-term">${entry.term}</div>
-      <div class="glossary-def">${entry.def}</div>
-    </div>`;
+    if (!grouped.has(entry.section)) grouped.set(entry.section, []);
+    grouped.get(entry.section).push(entry);
   });
-  container.innerHTML = html;
+
+  ['All', ...grouped.keys()].forEach(section => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'glossary-filter' + (section === 'All' ? ' active' : '');
+    button.textContent = section;
+    button.setAttribute('aria-pressed', String(section === 'All'));
+    button.addEventListener('click', () => {
+      glossaryCategory = section;
+      filters.querySelectorAll('.glossary-filter').forEach(el => {
+        const selected = el === button;
+        el.classList.toggle('active', selected);
+        el.setAttribute('aria-pressed', String(selected));
+      });
+      filterGlossary();
+    });
+    filters.appendChild(button);
+  });
+
+  grouped.forEach((entries, section) => {
+    // Site-wide section styles apply to <section>, so use an ordinary div.
+    const wrapper = document.createElement('div');
+    wrapper.className = 'glossary-section';
+    wrapper.dataset.section = section;
+    const heading = document.createElement('h3');
+    heading.className = 'glossary-section-title';
+    heading.appendChild(document.createTextNode(section));
+    const count = document.createElement('span');
+    count.className = 'glossary-section-count';
+    heading.appendChild(count);
+    const grid = document.createElement('div');
+    grid.className = 'glossary-grid';
+    wrapper.append(heading, grid);
+    container.appendChild(wrapper);
+
+    entries.forEach(entry => {
+      const card = document.createElement('article');
+      card.className = 'glossary-entry';
+      const title = document.createElement('h4');
+      title.className = 'glossary-term';
+      title.textContent = entry.term;
+      card.appendChild(title);
+      const segments = entry.def.split(/<br\s*\/?>(?:\s*<br\s*\/?>)+/i)
+        .map(text => text.replace(/<br\s*\/?>/gi, '\n').trim()).filter(Boolean);
+      const short = document.createElement('p');
+      short.className = 'glossary-def';
+      short.textContent = segments[0] || '';
+      card.appendChild(short);
+      let details = null;
+      if (segments.length > 1) {
+        details = document.createElement('details');
+        details.className = 'glossary-details';
+        const summary = document.createElement('summary');
+        summary.textContent = 'More details';
+        const more = document.createElement('div');
+        more.className = 'glossary-def';
+        segments.slice(1).forEach((part, index) => {
+          if (index) more.appendChild(document.createElement('br'));
+          const para = document.createElement('p');
+          para.textContent = part;
+          para.style.marginBottom = index === segments.length - 2 ? '0' : '.55rem';
+          more.appendChild(para);
+        });
+        details.append(summary, more);
+        card.appendChild(details);
+      }
+      grid.appendChild(card);
+      glossaryIndex.push({ section, card, preview: (entry.term + ' ' + segments[0]).toLowerCase(),
+        extra: segments.slice(1).join(' ').toLowerCase(),
+        full: (section + ' ' + entry.term + ' ' + segments.join(' ')).toLowerCase(), details });
+    });
+  });
+  glossaryBuilt = true;
+  filterGlossary();
 }
 
 function toggleGlossary() {
-  const panel = document.getElementById('glossary-panel');
-  const isOpen = panel.style.display !== 'none';
-  panel.style.display = isOpen ? 'none' : 'flex';
-  if (!isOpen) {
-    buildGlossary();
-    document.getElementById('glossary-search').focus();
-  }
+  const overlay = document.getElementById('glossary-overlay');
+  if (overlay.classList.contains('open')) { closeGlossary(); return; }
+  glossaryReturnFocus = document.activeElement;
+  buildGlossary();
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.querySelector('.glossary-toggle-btn').setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('glossary-search').focus();
+}
+
+function closeGlossary(event) {
+  const overlay = document.getElementById('glossary-overlay');
+  if (event && event.target !== overlay) return; // Only backdrop clicks close it.
+  if (!overlay.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.querySelector('.glossary-toggle-btn').setAttribute('aria-expanded', 'false');
+  if (!document.querySelector('#patch-modal-overlay.open, #char-history-overlay.open')) document.body.style.overflow = '';
+  if (glossaryReturnFocus && glossaryReturnFocus.isConnected) glossaryReturnFocus.focus();
+}
+
+function clearGlossarySearch() {
+  const search = document.getElementById('glossary-search');
+  search.value = '';
+  filterGlossary();
+  search.focus();
 }
 
 function filterGlossary(query) {
-  const q = query.trim().toLowerCase();
-  let currentSectionTitle = null;
-  const container = document.getElementById('glossary-content');
-  const children = container.children;
-  for (let i = 0; i < children.length; i++) {
-    const el = children[i];
-    if (el.classList.contains('glossary-section-title')) {
-      currentSectionTitle = el;
-      el.style.display = '';
-    } else if (el.classList.contains('glossary-entry')) {
-      const matches = !q || el.dataset.term.includes(q) || el.dataset.def.includes(q);
-      el.style.display = matches ? '' : 'none';
-    }
-  }
-  // Hide section titles if all entries below them are hidden
-  let title = null;
-  let hasVisible = false;
-  for (let i = 0; i < children.length; i++) {
-    const el = children[i];
-    if (el.classList.contains('glossary-section-title')) {
-      if (title) title.style.display = hasVisible ? '' : 'none';
-      title = el;
-      hasVisible = false;
-    } else if (el.classList.contains('glossary-entry') && el.style.display !== 'none') {
-      hasVisible = true;
-    }
-  }
-  if (title) title.style.display = hasVisible ? '' : 'none';
+  if (!glossaryBuilt) return;
+  const q = String(query === undefined ? document.getElementById('glossary-search').value : query).trim().toLowerCase();
+  document.getElementById('glossary-clear').hidden = !q;
+  let visible = 0;
+  document.querySelectorAll('.glossary-section').forEach(group => {
+    const matchesSection = glossaryCategory === 'All' || group.dataset.section === glossaryCategory;
+    let groupCount = 0;
+    glossaryIndex.filter(item => item.section === group.dataset.section).forEach(item => {
+      const match = matchesSection && (!q || item.full.includes(q));
+      item.card.hidden = !match;
+      if (match) {
+        groupCount++;
+        visible++;
+        // Reveal hidden paragraphs when those are the part that matched the search.
+        if (item.details && q) item.details.open = !item.preview.includes(q) && item.extra.includes(q);
+        else if (item.details && !q) item.details.open = false;
+      }
+    });
+    group.hidden = groupCount === 0;
+    group.querySelector('.glossary-section-count').textContent = groupCount + ' terms';
+  });
+  document.getElementById('glossary-empty').hidden = visible !== 0;
+  document.getElementById('glossary-result-count').textContent = `${visible} ${visible === 1 ? 'term' : 'terms'}${glossaryCategory === 'All' ? '' : ' in ' + glossaryCategory}`;
 }
+
+// Keep keyboard navigation inside the open dialog, and close on Escape.
+document.getElementById('glossary-overlay').addEventListener('keydown', event => {
+  if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); closeGlossary(); return; }
+  if (event.key !== 'Tab') return;
+  const dialog = document.getElementById('glossary-dialog');
+  const focusables = [...dialog.querySelectorAll('button:not([hidden]),input:not([disabled]),summary,[tabindex="0"]')]
+    .filter(el => el.getClientRects().length && !el.closest('[hidden]'));
+  const first = focusables[0], last = focusables[focusables.length - 1];
+  if (!first) return;
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+});
 
 function showSystemsTab(tab) {
   document.querySelectorAll('.systems-content').forEach(c => c.classList.remove('active'));
