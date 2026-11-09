@@ -1,0 +1,28 @@
+<section id="history">
+  <div class="section-header">
+    <p class="section-label">Timeline</p>
+    <h2>Patch History</h2>
+    <p class="muted">Every change from vanilla Evolve Stage 2 through the latest modded patch.</p>
+  </div>
+
+  <div class="history-layout">
+
+    <!-- SIDEBAR -->
+    <div class="patch-sidebar">
+      <button type="button" class="glossary-toggle-btn" onclick="toggleGlossary()" aria-haspopup="dialog" aria-expanded="false" aria-controls="glossary-dialog">Glossary</button>
+
+      <!-- LEGEND -->
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="history-main">
+      <input class="history-search" type="text" id="history-search" placeholder="Search changes... (e.g. Parnell, damage, cooldown)" oninput="searchHistory(this.value)">
+
+      <div class="patch-list-grid" id="patch-list-grid"><div class="muted" style="padding:2rem;text-align:center;">Loading patch history…</div></div>
+
+
+
+    </div></div><!-- /history-main -->
+  </div><!-- /history-layout -->
+</section>

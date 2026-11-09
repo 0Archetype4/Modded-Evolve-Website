@@ -1,0 +1,11 @@
+{
+  "name": "modded-evolve-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for modded-evolve.com",
+  "scripts": {
+    "start": "node serve.mjs",
+    "build": "node build.mjs",
+    "check": "node build.mjs --check"
+  }
+}

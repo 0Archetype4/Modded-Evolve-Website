@@ -1,0 +1,36 @@
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress"></div>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+<!-- ============================================================
+     NAVIGATION
+     To add a page: copy a <li>, give it an id="nav-PAGENAME",
+     then add a matching <section id="PAGENAME"> below.
+     ============================================================ -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">Modded Evolve</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')"        class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showPage('characters')"                 id="nav-characters">Characters</a></li>
+    <li class="nav-dropdown">
+      <a href="#" onclick="toggleGalleryDropdown(event)" id="nav-gallery">Gallery</a>
+      <div class="nav-dropdown-menu" id="gallery-dropdown-menu">
+        <a href="#" onclick="showPage('gallery-images')">Images</a>
+        <a href="#" onclick="showPage('gallery-videos')">Videos</a>
+        <a href="#" onclick="showPage('gallery-music')">Music</a>
+        <a href="#" onclick="showPage('gallery-maps')">Maps</a>
+        
+        <a href="#" onclick="showPage('voices')">Hunter Conversations</a>
+      </div>
+    </li>
+    <li><a href="#" onclick="showPage('systems')"                    id="nav-systems">Game Systems</a></li>
+    <!-- Ranked is finished but not public yet: hidden here, in the home cards, and in HIDDEN_PAGES below -->
+    <li style="display:none"><a href="#" onclick="showPage('ranked')"                     id="nav-ranked">Ranked</a></li>
+    <li><a href="#" onclick="showPage('history')"                    id="nav-history">Patch History</a></li>
+    <li><a href="#" onclick="showPage('download')"                   id="nav-download">Download</a></li>
+  </ul>
+</nav>

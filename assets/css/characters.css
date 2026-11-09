@@ -1,0 +1,434 @@
+/* ============================================================
+   PAGE 2 — CHARACTERS
+   ============================================================ */
+
+/* Class filter bar */
+.class-filter {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.filter-btn {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem 0.3rem 0.6rem;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  background: #000000;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Each class button gets its own color when active */
+.filter-btn[data-cls="monster"]:hover,
+.filter-btn[data-cls="monster"].active { background: var(--cl-monster); border-color: var(--cl-monster); color: #fff; }
+.filter-btn[data-cls="assault"]:hover,
+.filter-btn[data-cls="assault"].active { background: var(--cl-assault); border-color: var(--cl-assault); color: #fff; }
+.filter-btn[data-cls="medic"]:hover,
+.filter-btn[data-cls="medic"].active   { background: var(--cl-medic);   border-color: var(--cl-medic);   color: #fff; }
+.filter-btn[data-cls="support"]:hover,
+.filter-btn[data-cls="support"].active { background: var(--cl-support); border-color: var(--cl-support); color: #fff; }
+.filter-btn[data-cls="trapper"]:hover,
+.filter-btn[data-cls="trapper"].active { background: var(--cl-trapper); border-color: var(--cl-trapper); color: #fff; }
+.filter-btn[data-cls="all"]:hover,
+.filter-btn[data-cls="all"].active     { background: #867088; border-color: #867088; color: #fff; }
+
+.class-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Character sub-nav */
+.char-subnav {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface2);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--cls-color, var(--color-accent));
+  border-radius: var(--radius);
+}
+
+.char-subnav.visible { display: flex; }
+
+.char-btn {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  background: #000000;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.char-btn:hover { border-color: var(--cls-color, var(--color-accent)); color: var(--cls-color, var(--color-accent)); }
+.char-btn.active { background: #000000; border-color: var(--cls-color, var(--color-accent)); color: var(--cls-color, var(--color-accent)); }
+
+/* Character card */
+.char-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--cls-color, var(--color-accent));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.char-card { display: none; }
+.char-card.hidden { display: none; }
+.char-card.visible { display: block; }
+
+/* Class-specific card color overrides */
+.char-card[data-class="monster"] { --cls-color: var(--cl-monster); }
+.char-card[data-class="assault"] { --cls-color: var(--cl-assault); }
+.char-card[data-class="medic"]   { --cls-color: var(--cl-medic); }
+.char-card[data-class="support"] { --cls-color: var(--cl-support); }
+.char-card[data-class="trapper"] { --cls-color: var(--cl-trapper); }
+
+/* Top half: info left, portrait right */
+.char-top {
+  display: grid;
+  grid-template-columns: 1fr 620px;
+  min-height: 560px;
+  overflow: visible;
+}
+
+.char-info {
+  padding: 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  border-right: 1px solid var(--color-border);
+  background: #0f0f0f;
+}
+
+.char-class-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  background: var(--cls-color, var(--color-accent));
+  border: none;
+  color: #ffffff;
+  align-self: flex-start;
+}
+
+/* Class icon above character name */
+.char-class-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.char-class-icon-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: var(--cls-color, var(--color-accent));
+  opacity: 0.3;
+  display: block;
+  flex-shrink: 0;
+}
+
+.char-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  font-stretch: semi-condensed;
+  letter-spacing: 0.05em;
+  color: var(--cls-color, var(--color-text));
+  line-height: 1;
+}
+
+.char-desc {
+  font-size: 0.95rem;
+  color: #e8e8e8;
+  line-height: 1.7;
+  max-width: 480px;
+  border-left: 3px solid #444;
+  padding-left: 0.85rem;
+  margin-top: 0.5rem;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+.char-card[data-class="assault"]  .char-desc { border-color: #ab2d16; }
+.char-card[data-class="trapper"]  .char-desc { border-color: #807921; }
+.char-card[data-class="support"]  .char-desc { border-color: #c87a05; }
+.char-card[data-class="medic"]    .char-desc { border-color: #387672; }
+.char-card[data-class="monster"]  .char-desc { border-color: #8b1a1a; }
+
+/* ── CHARACTER PORTRAIT ────────────────────────────────────────
+   Replace .char-portrait-placeholder with an <img loading="lazy" decoding="async">:
+   <img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/parnell.png" alt="Parnell"
+        style="width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;">
+   ─────────────────────────────────────────────────────────────── */
+.char-portrait-col {
+  background: #000000;
+  width: 620px;
+  height: 560px;
+  min-height: 560px;
+  max-height: 560px;
+  flex-shrink: 0;
+  overflow: visible; /* portraits may be shifted/scaled by CARD_PORTRAIT_TWEAKS; clip only at the card edge */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.char-portrait-col img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+.char-portrait-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.4;
+  min-height: 560px;
+}
+
+/* Bottom half: four item columns */
+.char-items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Item type label — uses class color */
+.item-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cls-color, var(--color-accent));
+  margin-bottom: 0.15rem;
+  opacity: 1;
+  filter: brightness(1.4);
+}
+
+.char-item-col {
+  padding: 1.25rem;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #0f0f0f;
+}
+
+.char-item-col:last-child { border-right: none; }
+
+/* Image slot */
+.char-item-col img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  object-fit: contain;
+  padding: 10%;
+  box-sizing: border-box;
+  display: block;
+  background: #000000;
+  border: 1px solid var(--color-border);
+  min-height: 80px;
+}
+
+/* Small icon — more padding for small pixel art icons */
+.char-item-col img.icon-small {
+  padding: 20%;
+}
+
+/* Ability icon frame — clips the icon so it can be sized/nudged without moving the tile */
+.char-icon-frame{position:relative;width:100%;aspect-ratio:1/1;min-height:80px;border-radius:var(--radius,6px);background:#000;border:1px solid var(--color-border);overflow:hidden;box-sizing:border-box;}
+.char-icon-frame > img{width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:contain;padding:10%;box-sizing:border-box;display:block;background:transparent!important;border:none!important;border-radius:0!important;min-height:0!important;}
+.char-icon-frame > img.icon-small{padding:20%;}
+
+.item-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  font-stretch: semi-condensed;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.item-notes {
+  font-size: 0.88rem;
+  color: #ccc;
+  line-height: 1.65;
+  margin-top: 0.1rem;
+  white-space: pre-line;
+  flex: 1;
+}
+.item-notes ul {
+  list-style: none;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+}
+.item-notes ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.3rem;
+  color: #ccc;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.item-notes ul li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: calc(0.85rem * 1.5);   /* exactly the first text line, arrow centred in it */
+  display: flex;
+  align-items: center;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.char-card[data-class="medic"]   .item-notes ul li::before { color: var(--cl-medic); }
+.char-card[data-class="assault"] .item-notes ul li::before { color: var(--cl-assault); }
+.char-card[data-class="support"] .item-notes ul li::before { color: var(--cl-support); }
+.char-card[data-class="trapper"] .item-notes ul li::before { color: var(--cl-trapper); }
+.char-card[data-class="monster"] .item-notes ul li::before { color: var(--cl-monster); }
+
+.item-type-row { display: flex; justify-content: space-between; align-items: center; }
+.rank-btns { display: flex; gap: 3px; }
+.rank-btn { padding: 1px 7px; border-radius: 3px; border: 0.5px solid var(--color-border); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; background: transparent; color: var(--color-text-secondary); transition: all 0.15s; line-height: 1.6; }
+.rank-btn.active { background: var(--cl-monster); border-color: var(--cl-monster); color: #fff; }
+.stat-num { color: #fff; font-weight: 700; }
+.change-list strong { color: #fff; }
+.rank-val { transition: opacity 0.2s ease; color: #fff; font-weight: 700; }
+.rank-val.dimmed { opacity: 0.2; }
+.rank-sep { font-size: 1.2rem; line-height: 0; color: var(--cl-monster); opacity: 1; transition: opacity 0.2s ease; padding: 0 2px; }
+.rank-sep.dimmed { opacity: 0.15; }
+.rank-values-group { white-space: nowrap; }
+
+/* Long character names — prevent overflow into portrait */
+.char-card[data-name="Wasteland Maggie"] .char-name,
+.char-card[data-name="Tech Sergeant Hank"] .char-name {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+/* ============================================================
+   SKINS CAROUSEL
+   ============================================================ */
+.skins-strip {
+  border-top: 1px solid var(--color-border);
+  background: #050505;
+  padding: 0.9rem 1rem;
+}
+
+.skins-strip-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.4rem;
+}
+
+.skins-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cls-color, #444) #111;
+  padding-bottom: 10px;
+  margin-bottom: 2px;
+}
+.skins-scroll::-webkit-scrollbar { height: 6px; }
+.skins-scroll::-webkit-scrollbar-track { background: #111; border-radius: 3px; }
+.skins-scroll::-webkit-scrollbar-thumb { background: var(--cls-color, #444); border-radius: 3px; }
+.skins-scroll::-webkit-scrollbar-thumb:hover { background: var(--cls-color, #666); }
+
+.skin-thumb-btn {
+  flex-shrink: 0;
+  width: 120px;
+  height: 76px;
+  border-radius: 4px;
+  border: 1.5px solid var(--color-border);
+  background: #000;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  padding: 0;
+  position: relative;
+}
+
+.skin-thumb-btn:hover { border-color: #444; }
+.skin-thumb-btn.active { border-color: var(--cls-color, var(--color-accent)); }
+
+.skin-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  background: #000;
+  min-height: unset;
+  aspect-ratio: unset;
+}
+
+.skin-thumb-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  font-size: 7px;
+  text-align: center;
+  background: rgba(0,0,0,0.75);
+  color: #aaa;
+  padding: 2px 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skin-thumb-btn.active .skin-thumb-label { color: var(--cls-color, var(--color-accent)); }
+
+.skins-scroll.skins-rows { display: block; overflow-x: visible; padding-bottom: 0; }
+.skins-row-label { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-muted);
+  margin: 0 0 0.25rem; }
+.skins-subrow { margin-bottom: 0.45rem; }
+.skins-subrow:last-child { margin-bottom: 0; }

@@ -1,0 +1,63 @@
+<!-- CHAR HISTORY MODAL -->
+<div id="char-history-overlay" onclick="closeCharHistory(event)">
+  <div id="char-history-modal">
+    <div id="char-history-header">
+      <div id="char-history-header-left">
+        <img loading="lazy" decoding="async" id="char-history-portrait" src="" alt="">
+        <div>
+          <div id="char-history-name"></div>
+          <div id="char-history-subtitle"></div>
+        </div>
+      </div>
+      <button id="char-history-close" onclick="closeCharHistory()" aria-label="Close">✕</button>
+    </div>
+    <div id="char-history-body"></div>
+  </div>
+</div>
+
+<!-- PATCH MODAL OVERLAY -->
+<div id="patch-modal-overlay" onclick="closePatchModal(event)">
+  <div id="patch-modal">
+    <div id="patch-modal-header">
+      <div id="patch-modal-header-left">
+        <span class="version-badge" id="patch-modal-badge"></span>
+        <span id="patch-modal-title"></span>
+        <span id="patch-modal-date"></span>
+      </div>
+      <button id="patch-modal-close" onclick="closePatchModal()" aria-label="Close">✕</button>
+    </div>
+    <div id="patch-modal-class-picker"></div>
+    <div id="patch-modal-char-picker"></div>
+    <div id="patch-modal-char-detail"></div>
+    <div id="patch-modal-body"></div>
+  </div>
+</div>
+
+<!-- GLOSSARY MODAL — full-width, searchable reference with expandable definitions -->
+<div id="glossary-overlay" class="glossary-overlay" aria-hidden="true" onclick="closeGlossary(event)">
+  <div id="glossary-dialog" class="glossary-dialog" role="dialog" aria-modal="true" aria-labelledby="glossary-title" tabindex="-1">
+    <div class="glossary-modal-header">
+      <div>
+        <div class="glossary-modal-eyebrow">Game reference</div>
+        <h2 id="glossary-title">Glossary</h2>
+        <p>Find definitions for movement, weapons, abilities, and game mechanics.</p>
+      </div>
+      <button type="button" class="glossary-close" onclick="closeGlossary()" aria-label="Close glossary">✕</button>
+    </div>
+    <div class="glossary-modal-tools">
+      <div class="glossary-search-row">
+        <label for="glossary-search" class="glossary-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7"/><path d="m16 16 5 5"/></svg>
+          <input type="search" id="glossary-search" placeholder="Search terms or definitions..." autocomplete="off" oninput="filterGlossary(this.value)">
+        </label>
+        <button id="glossary-clear" type="button" class="glossary-clear" onclick="clearGlossarySearch()" hidden>Clear</button>
+      </div>
+      <div id="glossary-filters" class="glossary-filters" role="group" aria-label="Glossary categories"></div>
+      <div id="glossary-result-count" class="glossary-result-count" aria-live="polite" role="status"></div>
+    </div>
+    <div class="glossary-scroll" tabindex="0">
+      <div id="glossary-content"></div>
+      <div id="glossary-empty" class="glossary-empty" hidden>No matching terms. Try a different search or category.</div>
+    </div>
+  </div>
+</div>

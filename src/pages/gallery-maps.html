@@ -1,0 +1,436 @@
+<!-- GALLERY — MAPS -->
+<section id="gallery-maps">
+  <div class="gallery-back-bar">
+    
+    <span class="section-label" style="margin:0;">Maps</span>
+  </div>
+  <div class="section-header" style="margin-top:0;">
+    <h2>Maps</h2>
+    <p class="muted">Every map on Shear — with lore, images, and videos.</p>
+  </div>
+
+  <!-- Biome filter -->
+  <div class="map-biome-filter">
+    <button class="map-biome-btn active" onclick="filterMaps('all',this)">All</button>
+    <button class="map-biome-btn" onclick="filterMaps('desert',this)" style="--mbclr:#d4b050;">Desert</button>
+    <button class="map-biome-btn" onclick="filterMaps('forest',this)" style="--mbclr:#387642;">Forest</button>
+    <button class="map-biome-btn" onclick="filterMaps('ice',this)" style="--mbclr:#4a8aad;">Ice</button>
+    <button class="map-biome-btn" onclick="filterMaps('lava',this)" style="--mbclr:#8b2a1a;">Lava</button>
+    <button class="map-biome-btn" onclick="filterMaps('brokenhill',this)" style="--mbclr:#d4580a;">Broken Hill</button>
+    <button class="map-biome-btn" onclick="filterMaps('tutorial',this)" style="--mbclr:#7a6a9a;">Tutorial</button>
+  </div>
+
+  <div class="map-list" id="map-list">
+
+  <div class="map-card" data-biome="desert">
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
+      <div class="map-card-name">The Dam</div>
+      <div class="map-card-desc">Celestial's HEBO-class hydroelectric dam surveys a world from orbit, intelligently chooses the best location for a dam, then drops out of orbit and deploys itself, all without human supervision. The twin reservoirs' overflow doors are fail-safe, opening and releasing dangerous excess water should the power completely fail.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_desert_canyon.png','The Dam - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_desert_canyon.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_desert_canyon.png','The Dam - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_desert_canyon.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_canyon.png','The Dam - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_canyon.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_canyon_hunt.mp4','D Canyon Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_canyon_hunt.jpg" alt="D Canyon Hunt" loading="lazy"><div class="map-img-label">D Canyon Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_canyon_nest.mp4','D Canyon Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_canyon_nest.jpg" alt="D Canyon Nest" loading="lazy"><div class="map-img-label">D Canyon Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_canyon_rescue.mp4','D Canyon Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_canyon_rescue.jpg" alt="D Canyon Rescue" loading="lazy"><div class="map-img-label">D Canyon Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_canyon_merc.mp4','D Canyon Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_canyon_merc.jpg" alt="D Canyon Merc" loading="lazy"><div class="map-img-label">D Canyon Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_canyon_monster.mp4','D Canyon Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_canyon_monster.jpg" alt="D Canyon Monster" loading="lazy"><div class="map-img-label">D Canyon Monster</div></div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_desert_canyon_40534656.mp4','Lobby')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_desert_canyon_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel map-card-minimaps"><div class="mm" title="The Dam — Legacy minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_canyon.png','The Dam — Legacy minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_canyon.png" alt="The Dam — Legacy minimap" loading="lazy"><span class="mm-tag">Legacy</span></div><div class="mm" title="The Dam — Stage 2 minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_desert_canyon.png','The Dam — Stage 2 minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_desert_canyon.png" alt="The Dam — Stage 2 minimap" loading="lazy"><span class="mm-tag">Stage 2</span></div><div class="map-minimap-label">Minimaps · hover to compare</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="desert">
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
+      <div class="map-card-name">Armory</div>
+      <div class="map-card-desc">Designed to repel attacks from the most aggressive Corp Pirates, EbonStar's armory is fitted with an EMP cannon. When attacked, the cannon fires its EMP rockets which shut down the electronic systems of any would-be invader.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_desert_harsh.png','Armory - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_desert_harsh.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_desert_harsh.png','Armory - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_desert_harsh.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_harsh.png','Armory - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_harsh.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_harsh_hunt.mp4','D Harsh Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_harsh_hunt.jpg" alt="D Harsh Hunt" loading="lazy"><div class="map-img-label">D Harsh Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_harsh_nest.mp4','D Harsh Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_harsh_nest.jpg" alt="D Harsh Nest" loading="lazy"><div class="map-img-label">D Harsh Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_harsh_rescue.mp4','D Harsh Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_harsh_rescue.jpg" alt="D Harsh Rescue" loading="lazy"><div class="map-img-label">D Harsh Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_harsh_merc.mp4','D Harsh Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_harsh_merc.jpg" alt="D Harsh Merc" loading="lazy"><div class="map-img-label">D Harsh Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_harsh_monster.mp4','D Harsh Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_harsh_monster.jpg" alt="D Harsh Monster" loading="lazy"><div class="map-img-label">D Harsh Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_harsh.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_harsh.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="desert">
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
+      <div class="map-card-name">Wraith Trap</div>
+      <div class="map-card-desc">Desperate, EbonStar constructed a hideous, terrifying experiment at this secret desert base.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_desert_mountains.png','Wraith Trap - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_desert_mountains.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_desert_mountains.png','Wraith Trap - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_desert_mountains.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_mountains.png','Wraith Trap - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_mountains.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_mountain_hunt.mp4','D Mountain Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mountain_hunt.jpg" alt="D Mountain Hunt" loading="lazy"><div class="map-img-label">D Mountain Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_mountain_nest.mp4','D Mountain Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mountain_nest.jpg" alt="D Mountain Nest" loading="lazy"><div class="map-img-label">D Mountain Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_mountain_rescue.mp4','D Mountain Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mountain_rescue.jpg" alt="D Mountain Rescue" loading="lazy"><div class="map-img-label">D Mountain Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_mountain_merc.mp4','D Mountain Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_mountain_merc.jpg" alt="D Mountain Merc" loading="lazy"><div class="map-img-label">D Mountain Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_mountain_monster.mp4','D Mountain Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_mountain_monster.jpg" alt="D Mountain Monster" loading="lazy"><div class="map-img-label">D Mountain Monster</div></div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_desert_mountains_40534656.mp4','Lobby')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_desert_mountains_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/stage2/lobby_desert_mountains_deepest_dark_40534656.mp4','Deepest Dark Lobby (Stage 2)')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/stage2/lobby_desert_mountains_deepest_dark_40534656.jpg" alt="Deepest Dark Lobby (Stage 2)" loading="lazy"><div class="map-img-label">Deepest Dark Lobby (Stage 2)</div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel map-card-minimaps"><div class="mm" title="Wraith Trap — Legacy minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_mountains.png','Wraith Trap — Legacy minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_mountains.png" alt="Wraith Trap — Legacy minimap" loading="lazy"><span class="mm-tag">Legacy</span></div><div class="mm" title="Wraith Trap — Stage 2 minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_desert_mountains.png','Wraith Trap — Stage 2 minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_desert_mountains.png" alt="Wraith Trap — Stage 2 minimap" loading="lazy"><span class="mm-tag">Stage 2</span></div><div class="mm" title="Wraith Trap — Stage 2 Deepest Dark minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_desert_mountains_deepest_dark.png','Wraith Trap — Stage 2 Deepest Dark minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_desert_mountains_deepest_dark.png" alt="Wraith Trap — Stage 2 Deepest Dark minimap" loading="lazy"><span class="mm-tag">Stage 2 · Deepest Dark</span></div><div class="map-minimap-label">Minimaps · hover to compare</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="forest">
+    <div class="map-card-header" style="border-left:3px solid #387642;">
+      <div class="map-card-biome" style="color:#387642;">FOREST</div>
+      <div class="map-card-name">Weather Control</div>
+      <div class="map-card-desc">The powerful plasma storms that accompany near-surface bohrium mining can be prevented through the use of PITRE's synoptic effector technology, AKA weather control towers. Like many of the megastructures on Shear, the towers are self-maintaining and self-repairing, designed to run smoothly with a crew of only a few dozen.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_cliffs.png','Weather Control - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_cliffs.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_forest_cliffs.png','Weather Control - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_forest_cliffs.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_cliffs.png','Weather Control - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_cliffs.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_cliffs_hunt.mp4','F Cliffs Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_cliffs_hunt.jpg" alt="F Cliffs Hunt" loading="lazy"><div class="map-img-label">F Cliffs Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_cliffs_nest.mp4','F Cliffs Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_cliffs_nest.jpg" alt="F Cliffs Nest" loading="lazy"><div class="map-img-label">F Cliffs Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_cliffs_rescue.mp4','F Cliffs Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_cliffs_rescue.jpg" alt="F Cliffs Rescue" loading="lazy"><div class="map-img-label">F Cliffs Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_cliffs_merc.mp4','F Cliffs Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_cliffs_merc.jpg" alt="F Cliffs Merc" loading="lazy"><div class="map-img-label">F Cliffs Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_cliffs_monster.mp4','F Cliffs Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_cliffs_monster.jpg" alt="F Cliffs Monster" loading="lazy"><div class="map-img-label">F Cliffs Monster</div></div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_forest_cliffs_40534656.mp4','Lobby')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_forest_cliffs_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/stage2/lobby_forest_cliffs_bgh_40534656.mp4','Lobby (Stage 2)')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/stage2/lobby_forest_cliffs_bgh_40534656.jpg" alt="Lobby (Stage 2)" loading="lazy"><div class="map-img-label">Lobby (Stage 2)</div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel map-card-minimaps"><div class="mm" title="Weather Control — Legacy minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_cliffs.png','Weather Control — Legacy minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_cliffs.png" alt="Weather Control — Legacy minimap" loading="lazy"><span class="mm-tag">Legacy</span></div><div class="mm" title="Weather Control — Stage 2 minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_forest_cliffs.png','Weather Control — Stage 2 minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_forest_cliffs.png" alt="Weather Control — Stage 2 minimap" loading="lazy"><span class="mm-tag">Stage 2</span></div><div class="map-minimap-label">Minimaps · hover to compare</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="forest">
+    <div class="map-card-header" style="border-left:3px solid #387642;">
+      <div class="map-card-biome" style="color:#387642;">FOREST</div>
+      <div class="map-card-name">Refueling Tower</div>
+      <div class="map-card-desc">A Rank-Rajat self-repairing 'Refuel, Repair, and Resupply' depot sits alone in the forest, tended by its worker-crew of 18 engineers and servicemen. Periodically, vehicles visit for repair and to load up on supplies for their colony.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_rapids.png','Refueling Tower - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_rapids.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_forest_rapids.png','Refueling Tower - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_forest_rapids.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_rapids.png','Refueling Tower - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_rapids.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_rapids_hunt.mp4','F Rapids Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_rapids_hunt.jpg" alt="F Rapids Hunt" loading="lazy"><div class="map-img-label">F Rapids Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_rapids_nest.mp4','F Rapids Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_rapids_nest.jpg" alt="F Rapids Nest" loading="lazy"><div class="map-img-label">F Rapids Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_rapids_rescue.mp4','F Rapids Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_rapids_rescue.jpg" alt="F Rapids Rescue" loading="lazy"><div class="map-img-label">F Rapids Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_rapids_merc.mp4','F Rapids Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_rapids_merc.jpg" alt="F Rapids Merc" loading="lazy"><div class="map-img-label">F Rapids Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_rapids_monster.mp4','F Rapids Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_rapids_monster.jpg" alt="F Rapids Monster" loading="lazy"><div class="map-img-label">F Rapids Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_rapids.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_rapids.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="forest">
+    <div class="map-card-header" style="border-left:3px solid #387642;">
+      <div class="map-card-biome" style="color:#387642;">FOREST</div>
+      <div class="map-card-name">Fusion Plant</div>
+      <div class="map-card-desc">A Celestial Fission-Electric Type IV power plant provides electrical power to nearby settlements. It orbits the planet looking for a naturally-occurring thorium deposit, then lands and begins mining and processing the ore it needs to power the steam turbines. Its crew of 22 maintains the plant and operates the control systems.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_ruins.png','Fusion Plant - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_ruins.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_forest_ruins.png','Fusion Plant - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_forest_ruins.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_ruins.png','Fusion Plant - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_ruins.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_ruins_hunt.mp4','F Ruins Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_ruins_hunt.jpg" alt="F Ruins Hunt" loading="lazy"><div class="map-img-label">F Ruins Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_ruins_nest.mp4','F Ruins Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_ruins_nest.jpg" alt="F Ruins Nest" loading="lazy"><div class="map-img-label">F Ruins Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_ruins_rescue.mp4','F Ruins Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_ruins_rescue.jpg" alt="F Ruins Rescue" loading="lazy"><div class="map-img-label">F Ruins Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_ruins_merc.mp4','F Ruins Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_ruins_merc.jpg" alt="F Ruins Merc" loading="lazy"><div class="map-img-label">F Ruins Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_ruins_monster.mp4','F Ruins Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_ruins_monster.jpg" alt="F Ruins Monster" loading="lazy"><div class="map-img-label">F Ruins Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_ruins.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_ruins.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="brokenhill">
+    <div class="map-card-header" style="border-left:3px solid #d4580a;">
+      <div class="map-card-biome" style="color:#d4580a;">BROKEN HILL</div>
+      <div class="map-card-name">Broken Hill Foundry</div>
+      <div class="map-card-desc">Along with iron, nickel, copper, and aluminum, the Foundry smelts the tons of ultrastable bohrium produced by the mine. There are several foundries dotted across the colony, Broken Hill's is the largest.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_slagtown.png','Broken Hill Foundry - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_slagtown.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_forest_slagtown.png','Broken Hill Foundry - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_forest_slagtown.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_slagtown.png','Broken Hill Foundry - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_forest_slagtown.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_slagtown_hunt.mp4','F Slagtown Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_slagtown_hunt.jpg" alt="F Slagtown Hunt" loading="lazy"><div class="map-img-label">F Slagtown Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_slagtown_nest.mp4','F Slagtown Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_slagtown_nest.jpg" alt="F Slagtown Nest" loading="lazy"><div class="map-img-label">F Slagtown Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_f_slagtown_rescue.mp4','F Slagtown Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_f_slagtown_rescue.jpg" alt="F Slagtown Rescue" loading="lazy"><div class="map-img-label">F Slagtown Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_slagtown_merc.mp4','F Slagtown Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_slagtown_merc.jpg" alt="F Slagtown Merc" loading="lazy"><div class="map-img-label">F Slagtown Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_f_slagtown_monster.mp4','F Slagtown Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_f_slagtown_monster.jpg" alt="F Slagtown Monster" loading="lazy"><div class="map-img-label">F Slagtown Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_slagtown.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_forest_slagtown.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="ice">
+    <div class="map-card-header" style="border-left:3px solid #4a8aad;">
+      <div class="map-card-biome" style="color:#4a8aad;">ICE</div>
+      <div class="map-card-name">Aviary</div>
+      <div class="map-card-desc">The aviary is a paleobotanist's dream. Built over a thawed-out glacier, the ground is kept warm, allowing the ancient seeds in the soil to grow. Birds whose ancient migration patterns once carried them over the area returned, giving the ERI a chance to study both the dangerous phantoms and the less threatening batrays.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_ice_alpine.png','Aviary - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_ice_alpine.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_ice_alpine.png','Aviary - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_ice_alpine.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_ice_alpine.png','Aviary - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_ice_alpine.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_alpine_hunt.mp4','I Alpine Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_alpine_hunt.jpg" alt="I Alpine Hunt" loading="lazy"><div class="map-img-label">I Alpine Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_alpine_nest.mp4','I Alpine Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_alpine_nest.jpg" alt="I Alpine Nest" loading="lazy"><div class="map-img-label">I Alpine Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_alpine_rescue.mp4','I Alpine Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_alpine_rescue.jpg" alt="I Alpine Rescue" loading="lazy"><div class="map-img-label">I Alpine Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_i_alpine_merc.mp4','I Alpine Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_i_alpine_merc.jpg" alt="I Alpine Merc" loading="lazy"><div class="map-img-label">I Alpine Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_i_alpine_monster.mp4','I Alpine Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_i_alpine_monster.jpg" alt="I Alpine Monster" loading="lazy"><div class="map-img-label">I Alpine Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_ice_alpine.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_ice_alpine.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="ice">
+    <div class="map-card-header" style="border-left:3px solid #4a8aad;">
+      <div class="map-card-biome" style="color:#4a8aad;">ICE</div>
+      <div class="map-card-name">Distillery</div>
+      <div class="map-card-desc">Entrepreneurial independent businessmen set up shop here in an abandoned chemical factory to make illegal... er, authentic simulated scent-masking chemicals. Because their product is many times cheaper than the stuff the corps sell to the colonists, the colonists are not motivated to rat them out.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_ice_crashsite.png','Distillery - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_ice_crashsite.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_ice_crashsite.png','Distillery - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_ice_crashsite.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_ice_crashsite.png','Distillery - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_ice_crashsite.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_crashsite_hunt.mp4','I Crashsite Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_crashsite_hunt.jpg" alt="I Crashsite Hunt" loading="lazy"><div class="map-img-label">I Crashsite Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_crashsite_nest.mp4','I Crashsite Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_crashsite_nest.jpg" alt="I Crashsite Nest" loading="lazy"><div class="map-img-label">I Crashsite Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_crashsite_rescue.mp4','I Crashsite Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_crashsite_rescue.jpg" alt="I Crashsite Rescue" loading="lazy"><div class="map-img-label">I Crashsite Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_i_crashsite_merc.mp4','I Crashsite Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_i_crashsite_merc.jpg" alt="I Crashsite Merc" loading="lazy"><div class="map-img-label">I Crashsite Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_i_crashsite_monster.mp4','I Crashsite Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_i_crashsite_monster.jpg" alt="I Crashsite Monster" loading="lazy"><div class="map-img-label">I Crashsite Monster</div></div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_ice_crashsite_40534656.mp4','Lobby')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_ice_crashsite_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel map-card-minimaps"><div class="mm" title="Distillery — Legacy minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_ice_crashsite.png','Distillery — Legacy minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_ice_crashsite.png" alt="Distillery — Legacy minimap" loading="lazy"><span class="mm-tag">Legacy</span></div><div class="mm" title="Distillery — Stage 2 minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_ice_crashsite.png','Distillery — Stage 2 minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_ice_crashsite.png" alt="Distillery — Stage 2 minimap" loading="lazy"><span class="mm-tag">Stage 2</span></div><div class="map-minimap-label">Minimaps · hover to compare</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="ice">
+    <div class="map-card-header" style="border-left:3px solid #4a8aad;">
+      <div class="map-card-biome" style="color:#4a8aad;">ICE</div>
+      <div class="map-card-name">MedLab</div>
+      <div class="map-card-desc">The refinery where Salveron Industries manufactures Generyst; this facility is fitted with a special rocket capable of remote deploying the company's patented portable healing pods.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_ice_lake.png','MedLab - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_ice_lake.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_ice_lake.png','MedLab - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_ice_lake.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_ice_lake.png','MedLab - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_ice_lake.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_lake_hunt.mp4','I Lake Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_lake_hunt.jpg" alt="I Lake Hunt" loading="lazy"><div class="map-img-label">I Lake Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_lake_nest.mp4','I Lake Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_lake_nest.jpg" alt="I Lake Nest" loading="lazy"><div class="map-img-label">I Lake Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_i_lake_rescue.mp4','I Lake Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_i_lake_rescue.jpg" alt="I Lake Rescue" loading="lazy"><div class="map-img-label">I Lake Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_i_lakes_merc.mp4','I Lakes Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_i_lakes_merc.jpg" alt="I Lakes Merc" loading="lazy"><div class="map-img-label">I Lakes Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_i_lakes_monster.mp4','I Lakes Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_i_lakes_monster.jpg" alt="I Lakes Monster" loading="lazy"><div class="map-img-label">I Lakes Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_ice_lake.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_ice_lake.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="lava">
+    <div class="map-card-header" style="border-left:3px solid #8b2a1a;">
+      <div class="map-card-biome" style="color:#8b2a1a;">LAVA</div>
+      <div class="map-card-name">Barracks</div>
+      <div class="map-card-desc">EbonStar Tactical Solutions offers a range of outposts and armed contingents to choose from when contracting them to protect your settlement. Like the ES29 'Three of a Kind' outpost fitted with quasar-class anti-artillery multicannons! Even a Sol Guard frigate must take notice and consider retreat when these babies start firing.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_lava_depths.png','Barracks - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_lava_depths.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_lava_depths.png','Barracks - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_lava_depths.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_lava_depths.png','Barracks - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_lava_depths.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_depths_hunt.mp4','L Depths Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_depths_hunt.jpg" alt="L Depths Hunt" loading="lazy"><div class="map-img-label">L Depths Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_depths_nest.mp4','L Depths Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_depths_nest.jpg" alt="L Depths Nest" loading="lazy"><div class="map-img-label">L Depths Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_depths_rescue.mp4','L Depths Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_depths_rescue.jpg" alt="L Depths Rescue" loading="lazy"><div class="map-img-label">L Depths Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_l_depths_merc.mp4','L Depths Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_l_depths_merc.jpg" alt="L Depths Merc" loading="lazy"><div class="map-img-label">L Depths Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_l_depths_monster.mp4','L Depths Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_l_depths_monster.jpg" alt="L Depths Monster" loading="lazy"><div class="map-img-label">L Depths Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_lava_depths.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_lava_depths.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="lava">
+    <div class="map-card-header" style="border-left:3px solid #8b2a1a;">
+      <div class="map-card-biome" style="color:#8b2a1a;">LAVA</div>
+      <div class="map-card-name">Rendering Plant</div>
+      <div class="map-card-desc">This settlement renders marsh striders down into the fatty oils, lipids, and other organic chemicals the colony uses as raw materials for a million everyday uses. It's much cheaper and more efficient to mine the necessary hydrocarbons from the local wildlife than to synthesize it all.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_lava_paths.png','Rendering Plant - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_lava_paths.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_lava_paths.png','Rendering Plant - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_lava_paths.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_lava_paths.png','Rendering Plant - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_lava_paths.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_paths_hunt.mp4','L Paths Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_paths_hunt.jpg" alt="L Paths Hunt" loading="lazy"><div class="map-img-label">L Paths Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_paths_nest.mp4','L Paths Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_paths_nest.jpg" alt="L Paths Nest" loading="lazy"><div class="map-img-label">L Paths Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_paths_rescue.mp4','L Paths Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_paths_rescue.jpg" alt="L Paths Rescue" loading="lazy"><div class="map-img-label">L Paths Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_l_paths_merc.mp4','L Paths Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_l_paths_merc.jpg" alt="L Paths Merc" loading="lazy"><div class="map-img-label">L Paths Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_l_paths_monster.mp4','L Paths Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_l_paths_monster.jpg" alt="L Paths Monster" loading="lazy"><div class="map-img-label">L Paths Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_lava_paths.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_lava_paths.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="lava">
+    <div class="map-card-header" style="border-left:3px solid #8b2a1a;">
+      <div class="map-card-biome" style="color:#8b2a1a;">LAVA</div>
+      <div class="map-card-name">Orbital Drill</div>
+      <div class="map-card-desc">ITA employs lots of tricks to tease heavy elements out of Shear's crust. One is the Orbital, Asthenospheric, Fermionic Condenser. A deep-bore orbital energy drill that can punch a hole in the planet's crust. The OAFC is controlled via satellite from this remote location.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_lava_rivers.png','Orbital Drill - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_lava_rivers.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_lava_rivers.png','Orbital Drill - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_lava_rivers.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_lava_rivers.png','Orbital Drill - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_lava_rivers.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_rivers_hunt.mp4','L Rivers Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_rivers_hunt.jpg" alt="L Rivers Hunt" loading="lazy"><div class="map-img-label">L Rivers Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_rivers_nest.mp4','L Rivers Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_rivers_nest.jpg" alt="L Rivers Nest" loading="lazy"><div class="map-img-label">L Rivers Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_l_rivers_rescue.mp4','L Rivers Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_l_rivers_rescue.jpg" alt="L Rivers Rescue" loading="lazy"><div class="map-img-label">L Rivers Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_l_rivers_merc.mp4','L Rivers Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_l_rivers_merc.jpg" alt="L Rivers Merc" loading="lazy"><div class="map-img-label">L Rivers Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_l_rivers_monster.mp4','L Rivers Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_l_rivers_monster.jpg" alt="L Rivers Monster" loading="lazy"><div class="map-img-label">L Rivers Monster</div></div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_lava_rivers_40534656.mp4','Lobby (Legacy)')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_lava_rivers_40534656.jpg" alt="Lobby (Legacy)" loading="lazy"><div class="map-img-label">Lobby (Legacy)</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/stage2/lobby_lava_rivers_40534656.mp4','Lobby (Stage 2)')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/stage2/lobby_lava_rivers_40534656.jpg" alt="Lobby (Stage 2)" loading="lazy"><div class="map-img-label">Lobby (Stage 2)</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/stage2/lobby_lava_rivers_hellfire_40534656.mp4','Hellfire Lobby (Stage 2)')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/stage2/lobby_lava_rivers_hellfire_40534656.jpg" alt="Hellfire Lobby (Stage 2)" loading="lazy"><div class="map-img-label">Hellfire Lobby (Stage 2)</div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel map-card-minimaps"><div class="mm" title="Orbital Drill — Legacy minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_lava_rivers.png','Orbital Drill — Legacy minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_lava_rivers.png" alt="Orbital Drill — Legacy minimap" loading="lazy"><span class="mm-tag">Legacy</span></div><div class="mm" title="Orbital Drill — Stage 2 minimap" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_lava_rivers.png','Orbital Drill — Stage 2 minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_stage2_lava_rivers.png" alt="Orbital Drill — Stage 2 minimap" loading="lazy"><span class="mm-tag">Stage 2</span></div><div class="map-minimap-label">Minimaps · hover to compare</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="desert">
+    <div class="map-card-header" style="border-left:3px solid #d4b050;">
+      <div class="map-card-biome" style="color:#d4b050;">DESERT</div>
+      <div class="map-card-name">Salveron Industries</div>
+      <div class="map-card-desc">Built in an ecological dead-zone, Salveron Industries installed a Generyst processing facility far enough away from the rest of colonial life. Here, the alien fungus that fuels the MedGun can be bred in isolation without fear of contaminating the local food supply.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_desert_defend.png','Salveron Industries')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_desert_defend.png" alt="Loading Screen" loading="lazy"><div class="map-img-label">Loading Screen</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_defend_desert_finale.mp4','Defend Desert Finale')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_defend_desert_finale.jpg" alt="Defend Desert Finale" loading="lazy"><div class="map-img-label">Defend Desert Finale</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_merc_defend_desert.mp4','Finale Merc Defend Desert')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_merc_defend_desert.jpg" alt="Finale Merc Defend Desert" loading="lazy"><div class="map-img-label">Finale Merc Defend Desert</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_monster_defend_desert.mp4','Finale Monster Defend Desert')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_monster_defend_desert.jpg" alt="Finale Monster Defend Desert" loading="lazy"><div class="map-img-label">Finale Monster Defend Desert</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_desert01.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_desert01.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="forest">
+    <div class="map-card-header" style="border-left:3px solid #387642;">
+      <div class="map-card-biome" style="color:#387642;">FOREST</div>
+      <div class="map-card-name">New Calico</div>
+      <div class="map-card-desc">The administrative center of NORDITA's colony on Shear during Phase One of development, New Calico is no longer the largest settlement on the planet. But the town still thrives, boasting several bars, saloons, taverns, and churches. All the comforts of civilization!</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_forest_gulch.png','New Calico')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_forest_gulch.png" alt="Loading Screen" loading="lazy"><div class="map-img-label">Loading Screen</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_defend_forest_gulch_finale.mp4','Defend Forest Gulch Finale')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_defend_forest_gulch_finale.jpg" alt="Defend Forest Gulch Finale" loading="lazy"><div class="map-img-label">Defend Forest Gulch Finale</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_merc_defend_forest.mp4','Finale Merc Defend Forest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_merc_defend_forest.jpg" alt="Finale Merc Defend Forest" loading="lazy"><div class="map-img-label">Finale Merc Defend Forest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_monster_defend_forest.mp4','Finale Monster Defend Forest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_monster_defend_forest.jpg" alt="Finale Monster Defend Forest" loading="lazy"><div class="map-img-label">Finale Monster Defend Forest</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_forest_gulch.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_forest_gulch.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="ice">
+    <div class="map-card-header" style="border-left:3px solid #4a8aad;">
+      <div class="map-card-biome" style="color:#4a8aad;">ICE</div>
+      <div class="map-card-name">King's Fort</div>
+      <div class="map-card-desc">Housing and defending the administrative personnel for NORDITA's Shear colony, King's Fort acts as a secure bunker for executives in an emergency. This assumes the emergency arrives in the form of a Sol Guard frigate or rival Corp Pirates, rather than, say, an invasion by alien monsters from another dimension.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_ice_peak.png','King's Fort')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_ice_peak.png" alt="Loading Screen" loading="lazy"><div class="map-img-label">Loading Screen</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_defend_ice_peak_finale.mp4','Defend Ice Peak Finale')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_defend_ice_peak_finale.jpg" alt="Defend Ice Peak Finale" loading="lazy"><div class="map-img-label">Defend Ice Peak Finale</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_merc_defend_ice_peak.mp4','Finale Merc Defend Ice Peak')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_merc_defend_ice_peak.jpg" alt="Finale Merc Defend Ice Peak" loading="lazy"><div class="map-img-label">Finale Merc Defend Ice Peak</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_monster_defend_ice_peak.mp4','Finale Monster Defend Ice Peak')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_monster_defend_ice_peak.jpg" alt="Finale Monster Defend Ice Peak" loading="lazy"><div class="map-img-label">Finale Monster Defend Ice Peak</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_ice_peak.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_ice_peak.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="lava">
+    <div class="map-card-header" style="border-left:3px solid #8b2a1a;">
+      <div class="map-card-biome" style="color:#8b2a1a;">LAVA</div>
+      <div class="map-card-name">Colonial Water & Power</div>
+      <div class="map-card-desc">One of the largest man-made structures on Shear, CWP routes all power generated at the fusion plant and hydroelectric plant, as well as all freshwater. Built over a hydrologically active geothermal site, the plant is self-powered and self-sustaining. It has to be, as all life in the colony depends on its water and energy.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_lava_valley.png','Colonial Water & Power')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_lava_valley.png" alt="Loading Screen" loading="lazy"><div class="map-img-label">Loading Screen</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_defend_lava_valley_finale.mp4','Defend Lava Valley Finale')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_defend_lava_valley_finale.jpg" alt="Defend Lava Valley Finale" loading="lazy"><div class="map-img-label">Defend Lava Valley Finale</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_merc_defend_lava_valley.mp4','Finale Merc Defend Lava Valley')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_merc_defend_lava_valley.jpg" alt="Finale Merc Defend Lava Valley" loading="lazy"><div class="map-img-label">Finale Merc Defend Lava Valley</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_finale_monster_defend_lava_valley.mp4','Finale Monster Defend Lava Valley')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_finale_monster_defend_lava_valley.jpg" alt="Finale Monster Defend Lava Valley" loading="lazy"><div class="map-img-label">Finale Monster Defend Lava Valley</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_lava_valley.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_defend_lava_valley.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="brokenhill">
+    <div class="map-card-header" style="border-left:3px solid #d4580a;">
+      <div class="map-card-biome" style="color:#d4580a;">BROKEN HILL</div>
+      <div class="map-card-name">Broken Hill Mine</div>
+      <div class="map-card-desc">The first and largest bohrium mine on Shear, the Broken Hill Mine was the brainchild of Ida Lennox. She designed it, and it produced the billions of tons of raw materials necessary to build the rest of the colony, along with enough bohrium to make the corporations of the Arm independent from Hub.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/load_desert_mine.png','Broken Hill Mine - Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/load_desert_mine.png" alt="Hunt" loading="lazy"><div class="map-img-label">Hunt</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/nest_desert_mine.png','Broken Hill Mine - Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/nest_desert_mine.png" alt="Nest" loading="lazy"><div class="map-img-label">Nest</div></div><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_mine.png','Broken Hill Mine - Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/rescue_desert_mine.png" alt="Rescue" loading="lazy"><div class="map-img-label">Rescue</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_desert_mine_40534656.mp4','Broken Hill Mine Lobby')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_desert_mine_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_mine_hunt.mp4','D Mine Hunt')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mine_hunt.jpg" alt="D Mine Hunt" loading="lazy"><div class="map-img-label">D Mine Hunt</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_mine_nest.mp4','D Mine Nest')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mine_nest.jpg" alt="D Mine Nest" loading="lazy"><div class="map-img-label">D Mine Nest</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_intro_d_mine_rescue.mp4','D Mine Rescue')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_intro_d_mine_rescue.jpg" alt="D Mine Rescue" loading="lazy"><div class="map-img-label">D Mine Rescue</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_mine_merc.mp4','D Mine Merc')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_mine_merc.jpg" alt="D Mine Merc" loading="lazy"><div class="map-img-label">D Mine Merc</div></div><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/v_mp_outro_d_mine_monster.mp4','D Mine Monster')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/v_mp_outro_d_mine_monster.jpg" alt="D Mine Monster" loading="lazy"><div class="map-img-label">D Mine Monster</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_mine.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_desert_mine.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="brokenhill">
+    <div class="map-card-header" style="border-left:3px solid #d4580a;">
+      <div class="map-card-biome" style="color:#d4580a;">BROKEN HILL</div>
+      <div class="map-card-name">Broken Hill Murder Pits</div>
+      <div class="map-card-desc">Combatants from around the colony fight to the death in the Broken Hill Murder Pits.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-media">
+        <div class="map-media-section">
+          <div class="map-media-label">Images</div>
+          <div class="map-img-row"><div class="map-img-thumb" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/arena_murder_pits.png','Broken Hill Murder Pits - Arena')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/arena_murder_pits.png" alt="Arena" loading="lazy"><div class="map-img-label">Arena</div></div></div>
+        </div>
+        <div class="map-media-section">
+          <div class="map-media-label">Videos</div>
+          <div class="map-img-row"><div class="map-vid-thumb" onclick="openVideo('https://assets.modded-evolve.com/videos/legacyevolve/lobby_murder_pits_40534656.mp4','Murder Pits Lobby')"><img decoding="async" src="https://assets.modded-evolve.com/images/videothumbs/legacyevolve/lobby_murder_pits_40534656.jpg" alt="Lobby" loading="lazy"><div class="map-img-label">Lobby</div></div></div>
+        </div>
+      </div>
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_murder_pits.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_murder_pits.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  <div class="map-card" data-biome="tutorial">
+    <div class="map-card-header" style="border-left:3px solid #7a6a9a;">
+      <div class="map-card-biome" style="color:#7a6a9a;">TUTORIAL</div>
+      <div class="map-card-name">Tutorial</div>
+      <div class="map-card-desc">Training map designed to teach new players the fundamentals of both the Hunter and Monster roles. Covers movement, abilities, and combat mechanics.</div>
+    </div>
+    <div class="map-card-body">
+      <div class="map-card-minimap-panel" onclick="openImage('https://assets.modded-evolve.com/images/gallery/maps/minimap_tutorial.png','Minimap')"><img decoding="async" src="https://assets.modded-evolve.com/images/gallery/maps/minimap_tutorial.png" alt="Minimap" loading="lazy"><div class="map-minimap-label">Minimap</div></div>
+    </div>
+  </div>
+
+  </div>
+</section>

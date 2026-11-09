@@ -1,0 +1,251 @@
+/* ============================================================
+   PATCH HISTORY MODAL — COMPACT RESPONSIVE SIZING
+   Keep the existing visual design, but preserve reading space
+   on smaller windows and displays with increased scaling.
+   ============================================================ */
+@media (max-width: 900px), (max-height: 800px) {
+  #patch-modal-overlay {
+    padding: 8px;
+  }
+
+  #patch-modal {
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+
+  #patch-modal-class-picker {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .modal-class-btn {
+    padding: 8px 12px;
+    min-width: 70px;
+    gap: 4px;
+  }
+
+  .modal-class-btn img {
+    width: 32px;
+    height: 32px;
+  }
+
+  #patch-modal-char-picker {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .modal-char-btn {
+    width: 140px;
+    padding: 6px;
+  }
+
+  .modal-char-btn img {
+    height: 70px;
+  }
+}
+
+/* Short windows: let the pickers scroll away to show more notes. */
+@media (max-height: 800px) {
+  #patch-modal-class-picker,
+  #patch-modal-char-picker {
+    position: static;
+  }
+}
+
+
+/* === Ability statistics: unobtrusive side toggle ======================== */
+.ability-view-dock {
+  position: fixed;
+  right: 0;
+  top: 52%;
+  transform: translateY(-50%);
+  z-index: 90;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+.ability-view-trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 43px;
+  height: 58px;
+  padding: 5px 2px;
+  background: rgba(16,16,16,.97);
+  border: 1px solid #535353;
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  color: #f0f0f0;
+  box-shadow: 0 3px 13px rgba(0,0,0,.52);
+  cursor: pointer;
+  font: 700 10px/1.2 var(--font-body);
+  letter-spacing: .02em;
+  touch-action: manipulation;
+}
+.ability-view-trigger svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.ability-view-trigger:hover, .ability-view-trigger[aria-expanded="true"] {
+  background: #292020;
+  border-color: #b03a3a;
+}
+.ability-view-trigger:focus-visible, .ability-view-option:focus-visible {
+  outline: 3px solid #f1a0a0;
+  outline-offset: 2px;
+}
+.ability-view-panel {
+  position: absolute;
+  right: calc(100% + 7px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(238px, calc(100vw - 62px));
+  padding: 12px;
+  background: #101010;
+  border: 1px solid #515151;
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.75);
+  color: #eee;
+}
+.ability-view-panel[hidden] { display: none !important; }
+.ability-view-panel-heading { font-size: 14px; font-weight: 700; line-height: 1.25; margin: 0 0 4px; }
+.ability-view-panel-desc { font-size: 12px; line-height: 1.35; color: #bbb; margin: 0 0 10px; }
+.ability-view-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.ability-view-option {
+  appearance: none;
+  min-width: 0;
+  min-height: 42px;
+  padding: 6px 4px;
+  background: #232323;
+  border: 1px solid #484848;
+  border-radius: 6px;
+  color: #eee;
+  cursor: pointer;
+  font: 700 13px/1.2 var(--font-body);
+}
+.ability-view-option:hover { border-color: #bd6262; }
+.ability-view-option[aria-pressed="true"] { background: #821d1d; border-color: #bd4343; color: #fff; }
+@media (max-width: 520px) {
+  .ability-view-trigger { width: 40px; height: 54px; }
+  .ability-view-panel { width: min(218px, calc(100vw - 58px)); padding: 10px; }
+}
+#character-json-status[hidden] {display:none !important;}
+.character-json-status {display:flex; flex-wrap:wrap; gap:.65rem; align-items:center; justify-content:space-between;
+  background:#170c0c; border:1px solid #6b3232; border-radius:8px; padding:.6rem .9rem;
+  color:#e2d1d1; font-size:.76rem; margin:.3rem 0 1rem;}
+.character-json-status button {border:1px solid #a24b4b; border-radius:5px; background:#3c1717; color:#fff;
+  font:inherit; cursor:pointer; padding:.38rem .7rem; min-height:35px;}
+.character-json-status button:focus-visible {outline:2px solid #fff;outline-offset:2px;}
+.ability-card-preview {color:#d2d2d2; display:flex; flex-direction:column; gap:.7rem; font-size:.81rem; flex:1;}
+.ability-card-preview .ability-blurb {margin:0; line-height:1.55; color:#d5d5d5;}
+.ability-card-preview .ability-key-label {font-size:.64rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--cls-color,var(--color-accent)); font-weight:700; margin-top:.15rem;}
+/* Compact stat tiles reuse the dark card surface, spacing, and class accent from the site. */
+.ability-key-stats {--ability-stat-gap:7px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--ability-stat-gap);}
+.ability-key-stat {border:1px solid #292929; border-left:2px solid var(--cls-color,var(--color-accent));
+  background:#161616; border-radius:var(--radius,6px);
+  padding:.67rem .55rem; min-height:76px; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:.3rem;}
+/* Three stats: keep the last box the same width and centered below the first two. */
+.ability-key-stats > .ability-key-stat:nth-child(3):last-child {
+  grid-column:1 / -1; width:calc((100% - var(--ability-stat-gap)) / 2); justify-self:center;
+}
+.ability-key-value {font-variant-numeric:tabular-nums; color:var(--color-text,#fff); font-family:var(--font-heading); font-size:1.08rem;
+  font-weight:700; line-height:1.15; overflow-wrap:anywhere;}
+.ability-key-desc {font-size:.73rem; line-height:1.35; color:#ccc; overflow-wrap:break-word;}
+/* The Meteor Burn tile displays a full DPS + duration sentence, not a single number. */
+.ability-key-stat--burn .ability-key-desc {font-weight:700; color:#eee;}
+.ability-key-stat--burn .ability-key-value {font-family:var(--font-body); font-size:.78rem; font-weight:500; line-height:1.35;}
+/* Elder Kraken: show every Chain Lightning jump's damage in compact mode. */
+.ability-chain-damage {border:1px solid #323232; border-left:2px solid var(--cls-color,var(--color-accent));
+  background:#171717; border-radius:var(--radius,6px); padding:.55rem .5rem .4rem; min-width:0;}
+.ability-chain-damage-title {font-size:.76rem; font-weight:700; color:#f0f0f0; margin-bottom:.3rem;}
+.ability-chain-damage-table {width:100%; table-layout:fixed; border-collapse:collapse; font-variant-numeric:tabular-nums;}
+.ability-chain-damage-table th, .ability-chain-damage-table td {padding:.36rem .1rem; text-align:center;
+  font-size:.7rem; line-height:1.25; white-space:nowrap; border-bottom:1px solid #303030;}
+.ability-chain-damage-table thead th {font-size:.63rem; color:#c0c0c0; font-weight:700;}
+.ability-chain-damage-table th:first-child {width:31%; text-align:left;}
+.ability-chain-damage-table tbody th {color:#cacaca; font-weight:500;}
+.ability-chain-damage-table tbody td {color:#f5f5f5; font-weight:700;}
+.ability-chain-damage-table tr:last-child th, .ability-chain-damage-table tr:last-child td {border-bottom:0;}
+.ability-chain-damage-table .is-selected {background:rgba(139,26,26,.2); color:#fff;}
+/* A monster's three ranked damage values share one compact tile. */
+.ability-key-stat--stages {grid-column:1 / -1; min-height:88px; gap:.48rem;}
+.ability-key-stat--stages .ability-key-desc {font-weight:600; color:#ddd;}
+.ability-stage-values {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; width:100%;}
+.ability-stage {min-width:0; display:flex; flex-direction:column; gap:2px; padding:3px 5px; border-radius:3px;
+  background:rgba(255,255,255,.025); border:1px solid transparent;}
+.ability-stage-number {font-size:.62rem; font-weight:700; color:#999; letter-spacing:.04em;}
+.ability-stage-value {font-variant-numeric:tabular-nums; font:700 .98rem/1.2 var(--font-heading); color:var(--color-text,#fff); overflow-wrap:anywhere;}
+.ability-stage.is-selected {border-color:var(--cls-color,var(--color-accent)); background:rgba(255,255,255,.065);}
+.ability-stage.is-selected .ability-stage-number {color:var(--cls-color,var(--color-accent));}
+/* Existing third-box centering applies only to ordinary grids. Ranked monsters
+   have a full-width first row, followed by normal two-column stat boxes. */
+.ability-key-stats--monster-stages > .ability-key-stat:nth-child(3):last-child {
+  grid-column:auto; width:auto; justify-self:stretch;
+}
+.ability-key-stats--monster-stages > .ability-key-stat:nth-child(2):last-child,
+.ability-key-stats--monster-stages > .ability-key-stat:nth-child(4):last-child {
+  grid-column:1 / -1; width:calc((100% - var(--ability-stat-gap)) / 2); justify-self:center;
+}
+.ability-show-details {align-self:flex-start; margin-top:auto; cursor:pointer; border:1px solid #454545; background:#151515;
+  border-radius:6px; color:#eee; font-family:var(--font-body); font-size:.73rem; font-weight:700;
+  padding:.48rem .8rem; min-height:37px;}
+.ability-show-details:hover {border-color:var(--cls-color,var(--color-accent)); background:#252525;}
+body.ability-view-ready[data-ability-view="compact"] #characters .char-item-col .item-notes {display:none;}
+body.ability-view-ready[data-ability-view="detailed"] #characters .char-item-col .ability-card-preview {display:none;}
+/* Detailed stats use the clean, separator-free bullet list from the live website. */
+body.ability-view-ready[data-ability-view="detailed"] #characters .item-notes ul li {
+  margin:0 0 .3rem; padding:0 0 0 1.4rem;
+  border:0; background:transparent !important; border-radius:0;
+  overflow-wrap:anywhere;
+}
+body.ability-view-ready[data-ability-view="detailed"] #characters .item-notes li::before {left:0;top:0;}
+body.ability-view-ready[data-ability-view="detailed"] #characters .item-notes details {
+  padding:.45rem 0; border:0;
+  border-radius:0; background:transparent !important; margin-top:.55rem;
+}
+body.ability-view-ready[data-ability-view="detailed"] #characters .item-notes details summary {font-size:.78rem; min-height:28px; display:flex; align-items:center;}
+#characters .item-notes .bucket-fire-rate-raw {display:none !important;}
+#characters .item-notes .ability-mechanic-note {font-size:.8rem; color:#ccc; margin-top:.6rem;}
+@media (prefers-reduced-motion:reduce) {.ability-view-option {transition:none;}}
+
+/* 2026-10 readability and stat-presentation refinements */
+.patch-entry {background:#0e0e0e; border-color:#373737;}
+.patch-entry:hover,.patch-entry:focus-within{border-color:#868686;}
+.patch-header:hover {background:#191919;}
+.patch-date{color:#d2d2d2; font-size:.82rem;}
+.patch-change-count{color:#c0c0c0; border-top-color:#393939; font-size:.78rem;}
+.version-badge.origin{color:#d9d9d9; border-color:#555;}
+.glossary-toggle-btn{color:#ef615b; border-color:#393939;}
+.history-search{border-color:#555;}
+.history-search::placeholder{color:#bdbdbd;}
+#patch-modal-date,#char-history-subtitle,.patch-summary{color:#c4c4c4;}
+#characters .item-notes .rank-sep{padding:0 .32em;}
+#characters .item-notes .rank-values-group.stages-identical .rank-sep,
+#characters .item-notes .rank-values-group.stages-identical .rank-val[data-rank="1"],
+#characters .item-notes .rank-values-group.stages-identical .rank-val[data-rank="2"]{display:none!important;}
+#characters .item-notes details.ability-advanced{margin-top:.8rem;padding:.6rem .7rem;border:1px solid #424242;border-radius:7px;background:#161616;}
+#characters .item-notes details.ability-advanced summary{cursor:pointer;font-weight:700;color:#ededed;font-size:.83rem;}
+#characters .item-notes details.ability-advanced[open] summary{margin-bottom:.65rem;}
+#characters .item-notes .ability-mechanic-note{color:#c9c9c9;line-height:1.45;}
+#characters .ability-rank-upgrades{margin-top:.65rem;}
+#characters .ability-rank-upgrades[hidden]{display:none;}
+#characters .ability-rank-upgrades-title{color:#d1d1d1;font-size:.69rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;}
+#characters .ability-rank-upgrades-list{display:flex;gap:.35rem;flex-wrap:wrap;}
+#characters .ability-rank-upgrade{background:#1e1e1e;border:1px solid #454545;border-radius:5px;padding:.32rem .5rem;font-size:.75rem;line-height:1.45;color:#dadada;}
+#characters .ability-rank-upgrade strong{color:#fff;margin-left:.2rem;font-weight:700;}
+/* Preserve the original class-colored badges but improve faint labels and help text. */
+#characters .sv-passive [style*="color:#777"],
+#characters .char-item-col [style*="color:#777"]{color:#aaa!important;}
+
+/* Traversal panels: stage legends, readable units, and consistent Goliath layouts. */
+#characters .traversal-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:0 0 .9rem;}
+#characters .traversal-panel{background:#161616;border-radius:8px;padding:.65rem .75rem;min-width:0;}
+#characters .traversal-panel-title{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#e8c5c5;}
+#characters .traversal-stage-legend{font-size:.64rem;color:#bdbdbd;margin:.3rem 0 .5rem;letter-spacing:.04em;}
+#characters .traversal-stage-row{display:flex;flex-wrap:wrap;gap:.15rem .5rem;justify-content:space-between;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06);}
+#characters .traversal-stage-label{font-size:.72rem;color:#bdbdbd;}
+#characters .traversal-stage-values{font-size:.78rem;color:#fff;font-weight:700;white-space:nowrap;}
+#characters .traversal-stage-separator{padding:0 .25em;color:#aaa;}
+#characters .traversal-unit{font-size:.74em;color:#bcbcbc;white-space:nowrap;}
+#characters .traversal-staged-numbers{word-spacing:.2em;}
+@media(max-width:540px){#characters .traversal-detail-grid{grid-template-columns:1fr;}}

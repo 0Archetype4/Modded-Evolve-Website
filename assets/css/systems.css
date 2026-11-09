@@ -1,0 +1,220 @@
+/* ============================================================
+   DOWNLOAD PAGE
+   ============================================================ */
+/* ── SYSTEMS PAGE ── */
+.systems-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+}
+
+.systems-tab {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.15s;
+}
+.systems-tab.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.systems-tab:hover { color: var(--color-text); }
+
+.systems-content { display: none; }
+.systems-content.active { display: block; }
+
+.sec-monster { --pf:#8b1a1a; --pf-bright:#e35b5b; --pf-rgb:139,26,26; }
+.sec-hunter  { --pf:#8b1a1a; --pf-bright:#e35b5b; --pf-rgb:139,26,26; }
+
+/* Icon-only role toggles */
+.perks-toggles { display: flex; gap: 1.8rem; justify-content: center; margin: .2rem 0 1.2rem; }
+.perks-toggle {
+  background: none; border: none; padding: .3rem; cursor: pointer;
+  display: inline-flex; line-height: 0; opacity: .72;
+  transition: transform .16s ease, opacity .2s ease;
+}
+.perks-toggle:hover { transform: translateY(-3px) scale(1.05); opacity: 1; }
+.perks-toggle[aria-expanded="true"] { opacity: 1; transform: scale(1.03); }
+.perks-toggle-icon { width: 118px; height: 118px; object-fit: cover; object-position: center 20%; display: block; border-radius: 10px; }
+
+/* Dropdown panels */
+.perk-tierbar { display: flex; gap: .55rem; justify-content: center; margin: -.4rem 0 1.4rem; flex-wrap: wrap; }
+.perk-tierbtn {
+  background: #17191c; color: #e6e6e6; border: 1px solid #4a4d52; border-radius: 999px;
+  padding: .5rem 1.5rem; font-family: var(--font-heading); font-size: .88rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.perk-tierbtn:hover { background: #22252a; border-color: var(--pf, var(--color-accent)); }
+.perk-tierbtn.active {
+  color: #fff; border-color: transparent; background: var(--pf, var(--color-accent));
+  box-shadow: 0 6px 18px -6px rgba(var(--pf-rgb, 220,38,38), .9);
+}
+#systems-perks:not([data-tier]) .perk-tier { display: none; }
+#systems-perks:not([data-tier]) .perk-legend::after { content: " Pick a tier above to see its perks."; color: var(--pf, var(--color-accent)); }
+#systems-perks[data-tier="minor"] .perk-tier:not([data-tier="minor"]),
+#systems-perks[data-tier="major"] .perk-tier:not([data-tier="major"]),
+#systems-perks[data-tier="superior"] .perk-tier:not([data-tier="superior"]) { display: none; }
+.perk-legend { text-align: center; font-size: .8rem; color: var(--color-muted); margin: -.9rem 0 1.5rem; }
+.perk-legend b { color: #cfcfcf; font-weight: 600; }
+.perks-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .32s ease; }
+.perks-panel.expanded { grid-template-rows: 1fr; }
+.perks-panel-inner { overflow: hidden; min-height: 0; }
+.perks-panel .perks-grid { padding: .5rem 0 1.6rem; }
+
+/* Centered-emblem perk cards */
+.perks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.perk-tier { margin: 0 0 1.6rem; }
+.perk-tier-head { display: flex; align-items: baseline; gap: .6rem; margin: .2rem 0 .7rem; }
+.perk-tier-name { font-family: var(--font-heading); font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; color: var(--pf, var(--color-accent)); }
+.perk-tier-count { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--color-muted); }
+.perk-tier-head::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--pf, var(--color-accent)), transparent); opacity: .5; }
+.perk-card-desc { font-size: .8rem; line-height: 1.5; color: var(--color-text-secondary); text-align: center; margin: .15rem 0 .1rem; }
+.perk-icon-note { position: absolute; bottom: 2px; right: 4px; font-size: .55rem; letter-spacing: .06em; text-transform: uppercase; color: #6e7681; }
+.perk-card-stats .perk-stat-val { font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) { .perks-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .perks-grid { grid-template-columns: 1fr; } }
+
+.perk-card {
+  background: linear-gradient(158deg, #111 0%, #060606 60%, #040404 100%);
+  border: 1px solid #232323; border-radius: 14px;
+  padding: 1.35rem 1.05rem 1.05rem;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.perk-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--pf), transparent 70%); opacity: .5; transition: opacity .22s ease;
+}
+.perk-card:hover { transform: translateY(-4px); border-color: var(--pf); box-shadow: 0 14px 34px -14px rgba(var(--pf-rgb), .6); }
+.perk-card:hover::before { opacity: 1; }
+
+.perk-card-emblem { position: relative; height: 128px; display: flex; align-items: center; justify-content: center; margin-bottom: .35rem; }
+.perk-card-icon {
+  position: relative; width: 106px; height: 106px; object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.65)); transition: transform .28s ease;
+}
+.perk-card:hover .perk-card-icon { transform: scale(1.06); }
+
+.perk-card-name {
+  font-family: var(--font-heading); font-size: 1.28rem; font-weight: 700;
+  letter-spacing: 0.045em; text-transform: uppercase; color: #fff; text-align: center; margin-top: .1rem;
+}
+.perk-card-name::after { content: ''; display: block; width: 32px; height: 2px; background: var(--pf); margin: .6rem auto .2rem; border-radius: 2px; }
+
+.perk-card-stats { list-style: none; margin: .75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.perk-stat-row, .perk-stat-head { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, minmax(46px, auto)); align-items: center; gap: 6px; }
+.perk-stat-row { padding: 7px 10px; background: rgba(255,255,255,.035); border-radius: 6px; }
+.perk-stat-head { padding: 0 10px 2px; font-family: var(--font-heading); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: #7d848c; }
+.perk-stat-head span + span, .perk-stat-row span + span { text-align: right; }
+.perk-stat-row span + span { font-size: 1rem; font-weight: 700; color: var(--pf-bright); font-variant-numeric: tabular-nums; }
+.perk-stat-row span + span + span, .perk-stat-head span + span + span { border-left: 1px solid rgba(255,255,255,.10); padding-left: 6px; }
+.perk-stat-label { font-size: .9rem; font-weight: 600; color: #c9c9c9; text-align: left; letter-spacing: .01em; }
+.perk-stat-desc-row { justify-content: center; background: rgba(var(--pf-rgb), .07); }
+.perk-stat-desc { font-size: .89rem; font-weight: 500; color: #dcdcdc; text-align: center; line-height: 1.4; }
+.perk-stat-num { color: var(--pf-bright); font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  .perk-card, .perk-card-icon, .perk-card::before, .perks-panel, .perks-toggle { transition: none; }
+  .perk-card:hover { transform: none; }
+  .perk-card:hover .perk-card-icon { transform: none; }
+}
+
+.download-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.download-card h3 { margin-bottom: 0.25rem; }
+
+.download-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.75rem 0 1.25rem;
+  flex-wrap: wrap;
+}
+
+.download-meta span { font-size: 0.85rem; color: var(--color-muted); }
+.download-meta span strong { color: var(--color-text); }
+
+.download-instructions {
+  background: var(--color-surface2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.download-instructions h3 { margin-bottom: 1rem; color: var(--color-accent); }
+
+.steps {
+  list-style: none;
+  counter-reset: steps;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.steps li {
+  counter-increment: steps;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.steps li::before {
+  content: counter(steps);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  min-width: 24px; height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: #ffffff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.requirements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.req-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.req-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.req-value {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+}
