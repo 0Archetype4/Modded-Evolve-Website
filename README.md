@@ -16,6 +16,9 @@ node build.mjs          # regenerate index.html
 node build.mjs --check  # exit code 1 if index.html is out of date
 ```
 
+The build also fails if a partial leaves a tag unbalanced — a missing `</div>`
+would otherwise silently nest later sections and break the layout.
+
 Commit the regenerated `index.html` along with your changes: GitHub Pages serves
 the committed file and does not run a build.
 
@@ -30,9 +33,15 @@ The server rebuilds `index.html` whenever anything under `src/` or `assets/`
 changes — just save and refresh. Use `node serve.mjs --no-watch` to turn that off.
 `npm start` and `npm run build` do the same things.
 
-Opening `index.html` directly also works. If a browser blocks `history.pushState`
-on `file://`, `assets/js/url.js` falls back to a plain hash update, so page
-navigation keeps working.
+Opening `index.html` directly also works for the static content. If a browser
+blocks `history.pushState` on `file://`, `assets/js/url.js` falls back to a plain
+hash update, so page navigation keeps working.
+
+Two local-preview limits, both from the asset host's CORS policy:
+`assets.modded-evolve.com` only sends `Access-Control-Allow-Origin` for
+`https://modded-evolve.com`, so from `localhost` or `file://` the JSON fetches
+(patch history, character stats, ranked) are blocked and those areas show their
+"couldn't load" notice. Images, CSS and JS load normally.
 
 ## Layout
 

@@ -80,6 +80,21 @@ function read(rel) {
   return readFileSync(abs, 'utf8').replace(/\r\n/g, '\n').split('\n').join(EOL);
 }
 
+/** Reject structurally broken markup: every checked tag must open and close once. */
+function assertBalanced(html) {
+  const clean = html
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, '');
+  for (const tag of ['div', 'section', 'nav', 'footer', 'ul', 'ol', 'li', 'table', 'tr', 'td', 'th', 'button', 'a', 'span']) {
+    const open = (clean.match(new RegExp(`<${tag}\\b`, 'gi')) || []).length;
+    const close = (clean.match(new RegExp(`</${tag}\\s*>`, 'gi')) || []).length;
+    if (open !== close) {
+      throw new Error(`unbalanced <${tag}> in generated HTML: ${open} open, ${close} close`);
+    }
+  }
+}
+
 function buildHtml() {
   const out = [];
 
@@ -98,7 +113,9 @@ function buildHtml() {
 
   out.push('</body>');
   out.push('</html>');
-  return out.join(EOL) + EOL;
+  const html = out.join(EOL) + EOL;
+  assertBalanced(html);
+  return html;
 }
 
 /** Assemble and write index.html. Reused by serve.mjs for live rebuilds. */
