@@ -1,0 +1,141 @@
+<section id="ranked" style="text-align:left;">
+  <div class="section-header" style="margin-bottom:1.5rem;">
+    <p class="section-label">Competitive</p>
+    <h2>Ranked</h2>
+  </div>
+
+  <!-- Sub-nav -->
+  <div class="ranked-subnav">
+    <button class="ranked-subnav-btn active" onclick="showRankedTab('leaderboard', this)">Leaderboard</button>
+    <button class="ranked-subnav-btn" onclick="showRankedTab('stats', this)">Stats</button>
+  </div>
+
+  <!-- LEADERBOARD TAB -->
+  <div id="ranked-tab-leaderboard">
+  <div id="ranked-data" style="display:none;" data-players="[]"></div>
+  <div class="ranked-add-section" style="margin-bottom:1.5rem;"><h3>Rank Legend</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem;">
+      <div><div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#d4b050;margin-bottom:0.75rem;font-weight:700;">Bronze</div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/bronzedestroyer.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 8px #ff9944);"><span style="font-size:0.85rem;color:#ff9944;font-weight:700;">Bronze Destroyer</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/bronzeelite.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #e07030);"><span style="font-size:0.85rem;">Bronze Elite</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/bronzemaster.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #c86020);"><span style="font-size:0.85rem;">Bronze Master</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/bronzeexpert.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #b05018);"><span style="font-size:0.85rem;">Bronze Expert</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/bronzeskilled.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #883808);"><span style="font-size:0.85rem;">Bronze Skilled</span></div>
+      </div></div><div><div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#aaaaaa;margin-bottom:0.75rem;font-weight:700;">Silver</div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/silverdestroyer.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 8px #e8e8e8);"><span style="font-size:0.85rem;color:#e8e8e8;font-weight:700;">Silver Destroyer</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/silverelite.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #d0d0d0);"><span style="font-size:0.85rem;">Silver Elite</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/silvermaster.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #bbbbbb);"><span style="font-size:0.85rem;">Silver Master</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/silverexpert.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #aaaaaa);"><span style="font-size:0.85rem;">Silver Expert</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/silverskilled.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #888888);"><span style="font-size:0.85rem;">Silver Skilled</span></div>
+      </div></div><div><div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#c8a84b;margin-bottom:0.75rem;font-weight:700;">Gold</div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/golddestroyer.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 8px #ffd700);"><span style="font-size:0.85rem;color:#ffd700;font-weight:700;">Gold Destroyer</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/goldelite.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #f0c040);"><span style="font-size:0.85rem;">Gold Elite</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/goldmaster.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #d4a820);"><span style="font-size:0.85rem;">Gold Master</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/goldexpert.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #c8a030);"><span style="font-size:0.85rem;">Gold Expert</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/goldskilled.png" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 6px #a88020);"><span style="font-size:0.85rem;">Gold Skilled</span></div>
+      </div></div>
+    </div>
+  </div>
+  <div class="ranked-toolbar">
+    <div class="ranked-toolbar-group">
+      <button class="ranked-tier-btn" onclick="filterRankedTier('gold',this)" style="--rcls:#c8a84b;" title="Gold"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/golddestroyer.png" style="width:64px;height:64px;object-fit:contain;display:block;"></button>
+      <button class="ranked-tier-btn" onclick="filterRankedTier('silver',this)" style="--rcls:#bdbdbd;" title="Silver"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/silverdestroyer.png" style="width:64px;height:64px;object-fit:contain;display:block;"></button>
+      <button class="ranked-tier-btn" onclick="filterRankedTier('bronze',this)" style="--rcls:#ff9944;" title="Bronze"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ranks/bronzedestroyer.png" style="width:64px;height:64px;object-fit:contain;display:block;"></button>
+    </div>
+    <span class="ranked-toolbar-div"></span>
+    <div class="ranked-toolbar-group" id="ranked-class-filter">
+      <button class="ranked-filter-btn" data-cls="monster" onclick="filterRanked('monster',this)" style="--rcls:#8b1a1a;" title="Monster"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundmonster.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="ranked-filter-btn" data-cls="assault" onclick="filterRanked('assault',this)" style="--rcls:#ab2d16;" title="Assault"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundassault.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="ranked-filter-btn" data-cls="medic" onclick="filterRanked('medic',this)" style="--rcls:#387672;" title="Medic"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundmedic.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="ranked-filter-btn" data-cls="support" onclick="filterRanked('support',this)" style="--rcls:#c87a05;" title="Support"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundsupport.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="ranked-filter-btn" data-cls="trapper" onclick="filterRanked('trapper',this)" style="--rcls:#807921;" title="Trapper"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundtracker.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+    </div>
+    <span class="ranked-toolbar-spacer"></span>
+    <input type="text" id="ranked-search" class="ranked-search-input" placeholder="Search player" oninput="searchRanked(this.value)">
+    <select id="ranked-sort" class="ranked-sort-select" onchange="sortRanked(this.value)">
+      <option value="tier">Sort: Tier</option>
+      <option value="winrate">Sort: Win rate</option>
+      <option value="wins">Sort: Wins</option>
+    </select>
+  </div>
+  <div class="rank-view-toggle">
+    <button class="rank-view-btn active" data-view="overall" onclick="setRankView('overall',this)">Overall</button>
+    <button class="rank-view-btn" data-view="monster" onclick="setRankView('monster',this)"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundmonster.png" alt="">Monster</button>
+    <button class="rank-view-btn" data-view="hunter" onclick="setRankView('hunter',this)"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/icons/defaulthunter.png" alt="">Hunter</button>
+  </div>
+  <div id="ranked-podium" class="ranked-podium"></div>
+  <table class="ranked-table" id="ranked-table">
+    <thead><tr>
+      <th style="width:100px;">Tier</th>
+      <th style="width:2.5rem;text-align:center;">#</th>
+      <th>Player</th><th>Mains</th>
+      <th class="right">W-L</th><th class="right">Win Rate</th>
+    </tr></thead>
+    <tbody id="ranked-tbody"></tbody>
+  </table>
+  </div><!-- /ranked-tab-leaderboard -->
+
+  <!-- STATS TAB -->
+  <div id="ranked-tab-stats" style="display:none;">
+    <div class="stats-note">Stats are generated from logged matches. Data updates automatically when new matches are submitted.</div>
+
+    <!-- Summary cards -->
+    <div class="stats-summary">
+      <div class="balance-bar-wrap">
+        <div class="balance-head"><span class="balance-side"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/icons/defaulthunter.png" alt="Hunters">Hunters <strong id="bal-hunter">—</strong></span><span class="balance-side"><strong id="bal-monster">—</strong> Monster <img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundmonster.png" alt="Monster"></span></div>
+        <div class="balance-track"><div class="balance-fill-h" id="bal-fill-h" style="width:50%;"></div><div class="balance-fill-m" id="bal-fill-m" style="width:50%;"></div></div>
+      </div>
+      <div class="stats-chips">
+        <div class="stat-chip"><div class="stat-chip-label">Total matches</div><div class="stat-chip-value" id="stat-total-matches">—</div></div>
+        <div class="stat-chip"><div class="stat-chip-label">Avg duration</div><div class="stat-chip-value" id="stat-avg-duration">—</div></div>
+      </div>
+    </div>
+
+    <!-- Class filter -->
+    <div class="stats-section-header">Character Win Rates &amp; Pick Rates</div>
+    <div class="stats-class-filter">
+      <button class="stats-cls-btn" onclick="filterStats('monster', this)" style="--scls:var(--cl-monster);" title="Monster"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundmonster.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="stats-cls-btn" onclick="filterStats('assault', this)" style="--scls:var(--cl-assault);" title="Assault"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundassault.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="stats-cls-btn" onclick="filterStats('medic', this)" style="--scls:var(--cl-medic);" title="Medic"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundmedic.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="stats-cls-btn" onclick="filterStats('support', this)" style="--scls:var(--cl-support);" title="Support"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundsupport.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+      <button class="stats-cls-btn" onclick="filterStats('trapper', this)" style="--scls:var(--cl-trapper);" title="Trapper"><img loading="lazy" decoding="async" src="https://assets.modded-evolve.com/images/ui/lcdbackgroundtracker.png" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+    </div>
+
+    <table class="stats-table" id="stats-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th class="stats-sortable" onclick="sortStats('tier')">Character</th>
+          <th>Class</th>
+          <th class="right stats-sortable" onclick="sortStats('winrate')">Win Rate</th>
+          <th class="right stats-sortable" onclick="sortStats('pickrate')">Pick Rate</th>
+          <th class="right stats-sortable" onclick="sortStats('matches')">Matches</th>
+          <th class="right stats-sortable" onclick="sortStats('wins')">Wins</th>
+        </tr>
+      </thead>
+      <tbody id="stats-tbody"></tbody>
+    </table>
+
+    <!-- Matches by Game Mode -->
+    <div class="stats-section-header" style="margin-top:2.5rem;">Matches by Game Mode</div>
+    <div class="stats-mode-grid" id="stats-mode-grid">
+      <div class="stats-placeholder">No match data yet — submit matches via Discord bot to populate stats.</div>
+    </div>
+
+    <!-- Most Picked Perks -->
+    <div class="stats-section-header" style="margin-top:2.5rem;">Most Picked Perks</div>
+    <div class="perk-stats-cols" id="stats-perk-grid">
+      <div class="stats-placeholder">No match data yet — submit matches via Discord bot to populate stats.</div>
+    </div>
+
+    <!-- Most Played Map -->
+    <div class="stats-section-header" style="margin-top:2.5rem;">Most Played Maps</div>
+    <div class="stats-map-grid" id="stats-map-grid">
+      <div class="stats-placeholder">No match data yet — submit matches via Discord bot to populate stats.</div>
+    </div>
+  </div><!-- /ranked-tab-stats -->
+
+</section>
