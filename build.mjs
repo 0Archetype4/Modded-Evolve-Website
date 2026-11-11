@@ -12,7 +12,7 @@ import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
-const EOL = '\r\n';
+const EOL = '\n';   // the repository stores LF; .gitattributes keeps checkouts LF too
 const OUT = join(ROOT, 'index.html');
 
 /* Order matters: it is the original cascade / execution order. */
@@ -140,7 +140,8 @@ const invokedDirectly =
 
 if (invokedDirectly) {
   if (process.argv.includes('--check')) {
-    const current = existsSync(OUT) ? readFileSync(OUT, 'utf8') : '';
+    // Compare without carriage returns, so a checkout that converted line endings still passes.
+    const current = existsSync(OUT) ? readFileSync(OUT, 'utf8').replace(/\r\n/g, '\n') : '';
     if (current !== buildHtml()) {
       console.error('index.html is out of date. Run: node build.mjs');
       process.exit(1);
