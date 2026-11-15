@@ -191,7 +191,10 @@
   padding:.48rem .8rem; min-height:37px;}
 .ability-show-details:hover {border-color:var(--cls-color,var(--color-accent)); background:#252525;}
 body.ability-view-ready[data-ability-view="compact"] #characters .char-item-col .item-notes {display:none;}
-body.ability-view-ready[data-ability-view="detailed"] #characters .char-item-col .ability-card-preview {display:none;}
+/* Detailed mode keeps the toggle button so there is always a way back to compact. */
+body.ability-view-ready[data-ability-view="detailed"] #characters .char-item-col .ability-card-preview {display:flex; flex:0 0 auto;}
+body.ability-view-ready[data-ability-view="detailed"] #characters .char-item-col .ability-card-preview > :not(.ability-show-details) {display:none;}
+body.ability-view-ready[data-ability-view="detailed"] #characters .char-item-col .ability-show-details {margin-top:0; margin-bottom:.45rem;}
 /* Detailed stats use the clean, separator-free bullet list from the live website. */
 body.ability-view-ready[data-ability-view="detailed"] #characters .item-notes ul li {
   margin:0 0 .3rem; padding:0 0 0 1.4rem;

@@ -251,6 +251,14 @@
     mode=mode==='detailed'?'detailed':'compact';
     document.body.dataset.abilityView=mode;
     document.querySelectorAll('[data-ability-mode]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.abilityMode===mode));});
+    // The per-ability button stays visible in both views and flips its label, so
+    // "View all stats" is never a one-way trip.
+    document.querySelectorAll('.ability-show-details').forEach(function(b){
+      var detailed=mode==='detailed';
+      b.textContent=detailed?'\u2190 Compact view':'View all stats \u2192';
+      b.setAttribute('aria-pressed',String(detailed));
+      b.setAttribute('aria-label',(detailed?'Show compact stats for ':'View detailed stats for ')+(b.dataset.abilityName||'this ability'));
+    });
     try {localStorage.setItem('evolve-ability-stat-view',mode);} catch(e) {}
     if(mode==='compact') refreshAbilityPreviews();
   }
@@ -396,9 +404,13 @@
           chainLightningCompactTables.push({col:col,cells:cells,headers:headers});
         }
       }
-      var btn=document.createElement('button');btn.type='button';btn.className='ability-show-details';btn.textContent='View all stats →';
-      btn.setAttribute('aria-label','View detailed stats for '+(col.querySelector('.item-name')?.textContent.trim()||'this ability'));
-      btn.addEventListener('click',function(){setAbilityView('detailed');});
+      var abilityName=col.querySelector('.item-name')?.textContent.trim()||'this ability';
+      var btn=document.createElement('button');btn.type='button';btn.className='ability-show-details';btn.textContent='View all stats \u2192';
+      btn.dataset.abilityName=abilityName;
+      btn.setAttribute('aria-label','View detailed stats for '+abilityName);
+      btn.addEventListener('click',function(){
+        setAbilityView(document.body.dataset.abilityView==='detailed'?'compact':'detailed');
+      });
       block.appendChild(btn);
       notes.parentNode.insertBefore(block,notes);
     });
